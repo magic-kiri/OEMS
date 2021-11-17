@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Auth from "./componenets/auth";
+import Auth from "./components/auth";
 
 export default function Home() {
   return (
