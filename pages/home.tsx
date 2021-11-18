@@ -1,24 +1,13 @@
 import { useSession } from "next-auth/client";
 import React, { useContext } from "react";
-import SignOut from "./components/SignOut";
-import { UserContext } from './_app';
+import Navbar from "./components/Navbar";
+import Body from './components/Body';
+import { UserContext } from "./_app";
 
 function Home() {
   const { userInfo, setUserInfo } = useContext(UserContext);
-
-  return (
-    <div>
-      {userInfo?.name ? (
-        <>
-          HI, {userInfo.name}!!
-          Welcome to OEMS!
-          <SignOut />
-        </>
-      ) : (
-        <>PLEASE LOGIN FIRST</>
-      )}
-    </div>
-  );
+  const [session, loading] = useSession();
+  return <div>{loading ? <>PLEASE LOGIN FIRST</> : <><Navbar /><Body/></>}</div>;
 }
 
 export default Home;
