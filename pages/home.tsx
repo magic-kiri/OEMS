@@ -4,12 +4,11 @@ import SignOut from "./components/SignOut";
 import { UserContext } from './_app';
 
 function Home() {
-  const [session, loading] = useSession();
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   return (
     <div>
-      {session ? (
+      {userInfo?.name ? (
         <>
           HI, {userInfo.name}!!
           Welcome to OEMS!

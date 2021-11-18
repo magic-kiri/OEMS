@@ -1,16 +1,29 @@
 import type { AppProps } from "next/app";
 import { Provider, useSession } from "next-auth/client";
 import React, { useEffect, useState } from "react";
+
+// import types
+import { UserInfo } from "./utils/globalType";
+import { getInitialInformation } from "./utils/initalLoader";
+
+// Create context for UserInformation
 export const UserContext = React.createContext(null);
 
 const Loader = ({ children }) => {
   const [session, loading] = useSession();
-  const [userInfo, setUserInfo] = useState({ name: session?.user?.name });
+  const [userInfo, setUserInfo] = useState<UserInfo>();
+
+  const loadUserInfo = async () => {
+    const email = session.user.email;
+    const name = session.user?.name;
+    const { adminRole } = await getInitialInformation(email);
+    setUserInfo({ name, email, adminRole });
+  };
 
   useEffect(() => {
-    setUserInfo({
-      name: session?.user?.name,
-    });
+    if (session?.user?.email) {
+      loadUserInfo();
+    }
   }, [session]);
 
   return (
