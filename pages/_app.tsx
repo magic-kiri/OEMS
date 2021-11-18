@@ -1,5 +1,24 @@
 import type { AppProps } from "next/app";
-import { Provider } from "next-auth/client";
+import { Provider, useSession } from "next-auth/client";
+import React, { useEffect, useState } from "react";
+export const UserContext = React.createContext(null);
+
+const Loader = ({ children }) => {
+  const [session, loading] = useSession();
+  const [userInfo, setUserInfo] = useState({ name: session?.user?.name });
+
+  useEffect(() => {
+    setUserInfo({
+      name: session?.user?.name,
+    });
+  }, [session]);
+
+  return (
+    <UserContext.Provider value={{ userInfo, setUserInfo }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +42,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
       session={pageProps.session}
     >
-      <Component {...pageProps} />
+      <Loader>
+        <Component {...pageProps} />
+      </Loader>
     </Provider>
   );
 }
