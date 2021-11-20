@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { Provider, useSession } from "next-auth/client";
 import React, { useEffect, useState } from "react";
+import "../styles.css";
 
 // import types
 import { UserInfo } from "./utils/globalType";

@@ -1,16 +1,8 @@
 import React from "react";
+import bodystyle from "../styling/body.module.css";
 
 const Body = () => {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        backgroundColor: "green",
-        minHeight: "100px",
-      }}
-    ></div>
-  );
+  return <div className={bodystyle.bodyrest}></div>;
 };
 
 export default Body;
