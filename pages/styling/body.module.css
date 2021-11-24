@@ -1,0 +1,8 @@
+.bodyrest {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  z-index: -10;
+}

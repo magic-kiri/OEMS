@@ -1,15 +1,15 @@
 import React from "react";
+import bodystyle from "../styling/body.module.css";
+import ExamCardRunning from "./RunningExamCard";
+import ExamCardNormal from "./ExamCard";
 
 const Body = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        backgroundColor: "green",
-        minHeight: "100px",
-      }}
-    ></div>
+    <div className={bodystyle.bodyrest}>
+      <ExamCardRunning />
+      <ExamCardNormal />
+      <ExamCardNormal />
+    </div>
   );
 };
 

@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 10vh;
+  font-family: helvetica;
+  border-bottom: 0.5px solid #cccccc;
+  z-index: 10;
+  box-shadow: 4px 6px 20px 4px #aaaaaa;
+}
+
+.center {
+  justify-content: center;
+}
+
+.left {
+  justify-content: left;
+  padding-left: 10px;
+}
+
+.right {
+  justify-content: right;
+  padding-right: 10px;
+}
+
+.button {
+  background-color: white;
+  color: #4c036e;
+  border: none;
+  padding: 10px;
+  height: 10vh;
+  width: 15vh;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  transition-duration: 0.5s;
+  font-family: helvetica;
+}
+.button:hover {
+  background-color: #4c036e;
+  color: white;
+}
+
+.navlogo {
+  height: 80;
+  padding: 10;
+}

@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import sustlogo from "../public/image/sustlogo.png";
+import indexstyle from "./styling/index.module.css";
 
 export default function Home() {
   const router = useRouter();
@@ -8,9 +10,23 @@ export default function Home() {
   };
 
   return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      Welcome to OEMS! Join with us
-      <button onClick={handleClick}>Get Started</button>
+    <div className={indexstyle.indexpage}>
+      <div>
+        <Image
+          src={sustlogo}
+          alt="sustlogo"
+          height="253vh"
+          width="230vw"
+          // layout="responsive"
+        />
+      </div>
+      <h3 style={{ marginBottom: "unset" }}>
+        Shahjalal University of Science and Technology
+      </h3>
+      <h1 style={{ marginTop: "unset" }}>Online Exam Management System</h1>
+      <button onClick={handleClick} className={indexstyle.button}>
+        Get Started
+      </button>
     </div>
   );
 }
