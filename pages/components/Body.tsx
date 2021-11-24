@@ -4,8 +4,8 @@ const Body = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'space-between',
+        display: "flex",
+        justifyContent: "space-between",
         backgroundColor: "green",
         minHeight: "100px",
       }}
