@@ -1,16 +1,10 @@
-import { query } from "../api/databaseQuery/query";
+import { query } from "../../lib/databaseQuery/query";
+import { getSignInInformationQuery } from "../../lib/graphqlQuery/graphqlQuery";
 
-export const getInitialInformation = async (email: string) => {
-  const res = await query(`
-    query MyQuery {
-      users(where: {email: {_eq: "${email}"}}) {
-        adminRole
-        name
-      }
-    }
-  `);
-  if(res.data.users.length){
+export const getSignInInformation = async (email: string) => {
+  const res = await query(getSignInInformationQuery(email));
+  if (res?.data?.users?.length) {
     return res.data.users[0];
   }
-  return null;
+  return { adminRole: false };
 };

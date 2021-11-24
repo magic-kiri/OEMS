@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import "../styles.css";
 
 // import types
-import { UserInfo } from "./utils/globalType";
-import { getInitialInformation } from "./utils/initalLoader";
+import { getSignInInformation } from "./utils/initalLoader";
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo-client";
+import { UserInfo } from "../lib/types/types";
 
 // Create context for UserInformation
 export const UserContext = React.createContext(null);
@@ -17,7 +19,7 @@ const Loader = ({ children }) => {
   const loadUserInfo = async () => {
     const email = session.user.email;
     const name = session.user?.name;
-    const { adminRole } = await getInitialInformation(email);
+    const { adminRole } = await getSignInInformation(email);
     setUserInfo({ name, email, adminRole });
   };
 
@@ -29,7 +31,7 @@ const Loader = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ userInfo, setUserInfo }}>
-      {children}
+      <ApolloProvider client={client}>{children}</ApolloProvider>
     </UserContext.Provider>
   );
 };
