@@ -7,8 +7,9 @@
   background-color: white;
   height: 10vh;
   font-family: helvetica;
-  z-index: 10000;
-  box-shadow: 4px 6px 20px 4px #111111;
+  border-bottom: 0.5px solid #cccccc;
+  z-index: 10;
+  box-shadow: 4px 6px 20px 4px #aaaaaa;
 }
 
 .center {
