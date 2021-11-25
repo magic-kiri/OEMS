@@ -5,25 +5,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  height: 10vh;
-  font-family: helvetica;
+  height: 90px;
+  width: 100%;
+  position: fixed;
+  top: 0;
   border-bottom: 0.5px solid #cccccc;
-  z-index: 10;
-  box-shadow: 4px 6px 20px 4px #aaaaaa;
-}
-
-.center {
-  justify-content: center;
-}
-
-.left {
-  justify-content: left;
-  padding-left: 10px;
-}
-
-.right {
-  justify-content: right;
-  padding-right: 10px;
+  z-index: 1;
+  box-shadow: 4px 6px 15px 5px #dddddd;
 }
 
 .button {
@@ -31,8 +19,8 @@
   color: #4c036e;
   border: none;
   padding: 10px;
-  height: 10vh;
-  width: 15vh;
+  height: 100%;
+  min-width: 15vh;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -49,4 +37,9 @@
 .navlogo {
   height: 80;
   padding: 10;
+}
+
+.buttonFix {
+  height: inherit;
+  border-bottom: 0.5px solid #cccccc;
 }

@@ -1,20 +1,43 @@
 import React from "react";
 import cardstyle from "../styling/examcard.module.css";
+import Button from "../ui-custom-components/Button";
 
-const ExamCard = () => {
+type RunningExamCardProps = {
+  title: string;
+  time: string; // Time
+  courseCode: string;
+  onClick?: () => void;
+};
+
+const ExamCard = ({
+  title,
+  time,
+  courseCode,
+  onClick,
+}: RunningExamCardProps) => {
   return (
     <div className={cardstyle.cardRunning}>
-      <div style={{ display: "flex", flexDirection: "column", marginLeft: "15px" }}>
-        <p style={{ marginBottom: "unset" }}>Running Exam</p>
+      <div
+        style={{ display: "flex", flexDirection: "column", marginLeft: "15px" }}
+      >
+        <p style={{ marginBottom: "unset" }}>Running Exam: {courseCode}</p>
         <h3>
-          <b>Course Code</b>
+          <strong>{title}</strong>
         </h3>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", marginRight: "15px", alignContent: "right" }}>
-        <p>Date</p>
-        <div>
-          <button style={{ marginBottom: "15px" }}>Enter</button>
-        </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginRight: "15px",
+          alignItems: "right",
+          justifyContent: "right",
+        }}
+      >
+        <p>{time}</p>
+        <Button style={{ marginBottom: "15px" }} theme="transparent">
+          Join Now
+        </Button>
       </div>
     </div>
   );
