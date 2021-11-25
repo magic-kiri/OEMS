@@ -2,7 +2,8 @@
   background: transparent;
   color: white;
   border: 1px solid white;
-  padding: 10px;
+  padding: 10px 20px;
+  height: auto;
   text-align: center;
   font-size: 16px;
   border-radius: 5px;
@@ -19,7 +20,7 @@
   background-color: #eeeeee;
   border: 1.5px solid #4c036e;
   color: #4c036e;
-  padding: 10px;
+  padding: 10px 20px;
   height: auto;
   text-align: center;
   font-size: 18px;
@@ -37,7 +38,7 @@
   background: #4c036e;
   color: white;
   border: 1px solid #4c036e;
-  padding: 10px;
+  padding: 10px 20px;
   text-align: center;
   font-size: 16px;
   border-radius: 5px;

@@ -2,15 +2,27 @@ import React from "react";
 import cardstyle from "../styling/examcard.module.css";
 import Button from "../ui-custom-components/Button";
 
-const ExamCard = () => {
+type RunningExamCardProps = {
+  title: string;
+  time: string; // Time
+  courseCode: string;
+  onClick?: () => void;
+};
+
+const ExamCard = ({
+  title,
+  time,
+  courseCode,
+  onClick,
+}: RunningExamCardProps) => {
   return (
     <div className={cardstyle.cardRunning}>
       <div
         style={{ display: "flex", flexDirection: "column", marginLeft: "15px" }}
       >
-        <p style={{ marginBottom: "unset" }}>Running Exam: Course Code</p>
+        <p style={{ marginBottom: "unset" }}>Running Exam: {courseCode}</p>
         <h3>
-          <strong>Exam Title</strong>
+          <strong>{title}</strong>
         </h3>
       </div>
       <div
@@ -22,7 +34,7 @@ const ExamCard = () => {
           justifyContent: "right",
         }}
       >
-        <p>Duration</p>
+        <p>{time}</p>
         <Button style={{ marginBottom: "15px" }} theme="transparent">
           Join Now
         </Button>

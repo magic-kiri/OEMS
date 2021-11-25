@@ -1,8 +1,15 @@
+import { Button as AntDButton, ButtonProps as AntButtonProps } from "antd";
+import "antd/dist/antd.css";
 import buttonstyle from "./button.module.css";
 
+type ButtonProps = Partial<
+  AntButtonProps & {
+    theme: string;
+  }
+>;
 
 const getButtonClassName = (theme) => {
-  switch(theme) {
+  switch (theme) {
     case "light":
       return "button-light";
     case "dark":
@@ -12,10 +19,11 @@ const getButtonClassName = (theme) => {
   }
 };
 
-const Button = ({ theme, ...props }: any) => {
+const Button = ({ theme, ...props }: ButtonProps) => {
   const className: string = getButtonClassName(theme);
-  // return <MuiButton style={{backgroundColor: "#eeeeee", }} {...props}></MuiButton>;
-  return <button className={buttonstyle[className]} {...props}></button>;
+  return (
+    <AntDButton className={buttonstyle[className]} {...props}></AntDButton>
+  );
 };
 
 export default Button;

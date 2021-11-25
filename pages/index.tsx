@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import sustlogo from "../public/image/sustlogo.png";
-import indexstyle from "./styling/index.module.css";
+import indexstyle from "./index.module.css";
 import Button from "./ui-custom-components/Button";
 
 export default function Home() {

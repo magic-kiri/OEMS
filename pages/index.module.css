@@ -18,7 +18,6 @@
   background-color: #4c036e;
   min-width: 50px;
   min-height: 100px;
-  /* display: block; */
   pointer-events: none;
 }
 .logo:hover {
