@@ -1,5 +1,51 @@
-.button {
+.button-transparent {
   background: transparent;
   color: white;
   border: 1px solid white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  transition-duration: 0.2s;
+  font-family: helvetica;
+}
+.button-transparent:hover {
+  background-color: white;
+  color: #4c036e;
+  border: 1.5px solid white;
+}
+
+.button-light {
+  background-color: #eeeeee;
+  border: 1.5px solid #4c036e;
+  color: #4c036e;
+  padding: 10px;
+  height: auto;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition-duration: 0.2s;
+  font-family: helvetica;
+}
+.button-light:hover {
+  background-color: #4c036e;
+  color: white;
+  border: 1.5px solid #4c036e;
+}
+
+.button-dark {
+  background: #4c036e;
+  color: white;
+  border: 1px solid #4c036e;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  transition-duration: 0.2s;
+  font-family: helvetica;
+}
+.button-dark:hover {
+  background-color: white;
+  color: #4c036e;
+  border: 1.5px solid #4c036e;
 }

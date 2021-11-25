@@ -8,9 +8,9 @@ const ExamCard = () => {
       <div
         style={{ display: "flex", flexDirection: "column", marginLeft: "15px" }}
       >
-        <p style={{ marginBottom: "unset" }}>Running Exam</p>
+        <p style={{ marginBottom: "unset" }}>Running Exam: Course Code</p>
         <h3>
-          <b>Course Code</b>
+          <strong>Exam Title</strong>
         </h3>
       </div>
       <div
@@ -18,13 +18,14 @@ const ExamCard = () => {
           display: "flex",
           flexDirection: "column",
           marginRight: "15px",
-          alignContent: "right",
+          alignItems: "right",
+          justifyContent: "right",
         }}
       >
-        <p>Date</p>
-        <div>
-          <Button style={{ marginBottom: "15px" }}>Enter</Button>
-        </div>
+        <p>Duration</p>
+        <Button style={{ marginBottom: "15px" }} theme="transparent">
+          Join Now
+        </Button>
       </div>
     </div>
   );

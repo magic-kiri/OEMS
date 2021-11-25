@@ -15,7 +15,7 @@
 
 .cardRunning:hover {
   box-shadow: 0px 4px 4px 0px #dddddd;
-  padding: 5px;
+  padding: 2px;
 }
 
 .cardNormal {
@@ -35,5 +35,5 @@
 
 .cardNormal:hover {
   box-shadow: 0px 4px 4px 0px #eeeeee;
-  margin: 5px;
+  padding: 2px;
 }

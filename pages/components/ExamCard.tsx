@@ -1,16 +1,16 @@
 import React from "react";
 import cardstyle from "../styling/examcard.module.css";
+import Button from "../ui-custom-components/Button";
 
 const ExamCard = () => {
   return (
     <div className={cardstyle.cardNormal}>
-      <h4 style={{ marginLeft: "15px" }}>Upcoming Exam</h4>
-      <p>
-        <b>Course Code</b>
-      </p>
+      <h4 style={{ marginLeft: "15px" }}>Exam Title</h4>
       <p>Date</p>
       <div>
-        <button style={{ margin: "15px" }}>Enter</button>
+        <Button style={{ margin: "15px" }} theme="dark">
+          Enter
+        </Button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import sustlogo from "../public/image/sustlogo.png";
 import indexstyle from "./styling/index.module.css";
+import Button from "./ui-custom-components/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -24,9 +25,9 @@ export default function Home() {
         Shahjalal University of Science and Technology
       </h3>
       <h1 style={{ marginTop: "unset" }}>Online Exam Management System</h1>
-      <button onClick={handleClick} className={indexstyle.button}>
+      <Button onClick={handleClick} theme="light">
         Get Started
-      </button>
+      </Button>
     </div>
   );
 }
