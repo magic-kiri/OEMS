@@ -1,10 +1,9 @@
 import React from "react";
 import { Typography } from "antd";
-import { TitleProps as TypoTitleProps } from "antd/lib/typography/Title";
-const TypoTitle = Typography;
 
-type TitleProps = TypoTitleProps;
+const TypoTitle = Typography.Title;
 
+type TitleProps = React.ComponentProps<typeof Typography>;
 const Title = (props: TitleProps) => {
   return <TypoTitle {...props}></TypoTitle>;
 };
