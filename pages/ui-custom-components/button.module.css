@@ -37,8 +37,10 @@
 .button-dark {
   background: #4c036e;
   color: white;
-  border: 1px solid #4c036e;
+  border: 1.5px solid #4c036e;
   padding: 10px 20px;
+  height: auto;
+  width: auto;
   text-align: center;
   font-size: 16px;
   border-radius: 5px;
