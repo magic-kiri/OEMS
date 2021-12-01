@@ -4,11 +4,13 @@ import navlogo from "../../public/image/sustlogo.png";
 import Image from "next/image";
 import { PlusOutlined } from "@ant-design/icons";
 import Title from "../ui-custom-components/Title";
-// import { Typography } from "antd";
-
-// const { Title, Text } = Typography;
+import CreateExamModal from "./CreateExamModal";
 
 const Navbar = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen((value) => !value);
+  }
   return (
     <>
       <div className={navstyle.navbar}>
@@ -33,7 +35,11 @@ const Navbar = () => {
           <button className={navstyle.button}>Finished</button>
         </div>
         <div style={{ padding: "10px" }}>
-          <PlusOutlined style={{ fontSize: "20px", color: "#4c036e" }} />
+          <CreateExamModal open={open} setOpen={setOpen} />
+          <PlusOutlined
+            style={{ fontSize: "20px", color: "#4c036e" }}
+            onClick={handleClick}
+          />
           profile
         </div>
       </div>

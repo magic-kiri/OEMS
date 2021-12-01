@@ -1,26 +1,13 @@
 import React from "react";
-import TextField from "./TextField";
-import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
-import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import DatePicker from "@material-ui/lab/DatePicker";
+import { DatePicker as AntdDatePicker } from "antd";
 
-export default function MuiDatePicker() {
-  const [value, setValue] = React.useState(new Date());
+type DatePickerProps = React.ComponentProps<typeof AntdDatePicker> & {};
 
-  const handleChange = (value: any) => {
-    setValue(value);
-  };
-  return (
-    <>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker
-          views={["day", "month", "year"]}
-          label="Select Date"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} helperText={null} />}
-        />
-      </LocalizationProvider>
-    </>
-  );
+function onChange(date: any, dateString: any) {
+  console.log(date, dateString);
 }
+
+const TimePicker = ({ ...props }: DatePickerProps) => {
+  return <AntdDatePicker {...props} onChange={onChange}></AntdDatePicker>;
+};
+export default TimePicker;
