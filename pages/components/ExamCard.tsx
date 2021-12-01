@@ -17,7 +17,9 @@ const ExamCard = ({ title, time, courseCode, onClick }: ExamCardProps) => {
           <strong>{`${courseCode}: ${title}`}</strong>
         </Text>
       </div>
-      <Text style={{ margin: "15px 45px", minWidth: "20%" }}>{time}</Text>
+      <div style={{ margin: "15px 45px", minWidth: "20%", textAlign: "right" }}>
+        <Text>{time}</Text>
+      </div>
     </div>
   );
 };
