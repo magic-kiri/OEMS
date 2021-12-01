@@ -12,10 +12,6 @@ import { UserInfo } from "../lib/types/types";
 // Create context for UserInformation
 export const UserContext = React.createContext(null);
 
-//for Mui import
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-
 const Loader = ({ children }) => {
   const [session, loading] = useSession();
   const [userInfo, setUserInfo] = useState<UserInfo>();

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../ui-custom-components/Button";
 import Input from "../ui-custom-components/InputText";
 import Select from "../ui-custom-components/Select";
 import Option from "../ui-custom-components/Option";
 import Modal from "../ui-custom-components/Modal";
 import DatePicker from "../ui-custom-components/DatePicker";
-import TimePicker, { RangePicker } from "../ui-custom-components/TimePicker";
+import { RangePicker } from "../ui-custom-components/TimePicker";
 
 import ModalStyle from "./createExamModal.module.css";
 
@@ -22,23 +22,20 @@ export default function CreateExamModal({ setOpen, open }) {
     setOpen(false);
   };
 
-  // @ts-ignore
   function handleChangeSelect(value) {
     console.log(`selected ${value}`);
   }
 
-  // @ts-ignore
   const courseCodeOptions = courseList.map((course) => (
-    <Option id={course.id} value={course.courseCode}>
+    <Option key={course.key} value={course.courseCode}>
       {course.courseCode}
     </Option>
   ));
   const courseTitleOptions = courseList.map((course) => (
-    <Option id={course.id} value={course.courseTitle}>
+    <Option key={course.key} value={course.courseTitle}>
       {course.courseTitle}
     </Option>
   ));
-  // console.log(options);
   return (
     <div>
       <Modal
@@ -46,14 +43,14 @@ export default function CreateExamModal({ setOpen, open }) {
         title="Create an Exam"
         onCancel={handleClickClose}
         footer={[
-          <Button theme="dark" onClick={handleClickClose}>
-            {" "}
-            Cancel{" "}
+          <Button key="cancelButton" theme="dark" onClick={handleClickClose}>
+            Cancel
           </Button>,
           <Button
+            key="submitButton"
             theme="dark"
             onClick={handleSubmit}
-            style={{ marginRight: "7px" }}
+            style={{ marginRight: "7px", marginLeft: "10px" }}
           >
             Create
           </Button>,
