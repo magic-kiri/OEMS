@@ -8,18 +8,18 @@ type ButtonProps = Partial<
   }
 >;
 
-const getButtonClassName = (theme) => {
+const getButtonClassName = (theme: string) => {
   switch (theme) {
     case "light":
       return "button-light";
-    case "dark":
-      return "button-dark";
     case "transparent":
       return "button-transparent";
+    default:
+      return "button-dark";
   }
 };
 
-const Button = ({ theme, ...props }: ButtonProps) => {
+const Button = ({ theme = "dark", ...props }: ButtonProps) => {
   const className: string = getButtonClassName(theme);
   return (
     <AntDButton className={buttonstyle[className]} {...props}></AntDButton>

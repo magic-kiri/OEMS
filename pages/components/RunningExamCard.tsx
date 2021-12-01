@@ -1,6 +1,7 @@
 import React from "react";
-import cardstyle from "../styling/examcard.module.css";
+import cardstyle from "./runningExamCard.module.css";
 import Button from "../ui-custom-components/Button";
+import Text from "../ui-custom-components/Text";
 
 type RunningExamCardProps = {
   title: string;
@@ -18,25 +19,37 @@ const ExamCard = ({
   return (
     <div className={cardstyle.cardRunning}>
       <div
-        style={{ display: "flex", flexDirection: "column", marginLeft: "15px" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "15px 45px",
+        }}
       >
-        <p style={{ marginBottom: "unset" }}>Running Exam: {courseCode}</p>
-        <h3>
-          <strong>{title}</strong>
-        </h3>
+        <Text
+          style={{ marginBottom: "unset", fontSize: "16px", color: "white" }}
+        >
+          Running Exam: {courseCode}
+        </Text>
+        <Text
+          style={{ marginBottom: "unset", fontSize: "24px", color: "white" }}
+        >
+          <strong> {title} </strong>
+        </Text>
       </div>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          marginRight: "15px",
-          alignItems: "right",
-          justifyContent: "right",
+          margin: "15px 45px",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <p>{time}</p>
+        <Text style={{ fontSize: "16px", color: "white", padding: "10px" }}>
+          {time}
+        </Text>
         <Button style={{ marginBottom: "15px" }} theme="transparent">
-          Join Now
+          Participate Now
         </Button>
       </div>
     </div>
