@@ -9,7 +9,7 @@ const Clarification = () => {
     <div className={ClarificationStyle.clarification}>
       <div style={{ alignItems: "left" }}>
         <Text>1 Clarification</Text>
-        <Divider />
+        <Divider style={{ margin: "15px 0px" }} />
         <div>
           <Text>
             <strong> Arnab Sen Sharma </strong>

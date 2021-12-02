@@ -16,7 +16,7 @@
 
 .button {
   background-color: white;
-  color: #4c036e;
+  color: #1169ba;
   border: none;
   padding: 10px;
   height: 100%;
@@ -30,7 +30,7 @@
   font-family: helvetica;
 }
 .button:hover {
-  background-color: #4c036e;
+  background-color: #1169ba;
   color: white;
 }
 

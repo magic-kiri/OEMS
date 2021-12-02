@@ -1,6 +1,6 @@
 import React from "react";
 import ExamBodyStyle from "./examBody.module.css";
-import Tabs from "./Tabs";
+import Tabs from "./ExamTabs";
 import ExamHeaderCard from "./ExamHeaderCard";
 
 const ExamBody = () => {

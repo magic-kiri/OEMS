@@ -10,7 +10,7 @@ const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const handleClick = () => {
     setOpen((value) => !value);
-  }
+  };
   return (
     <>
       <div className={navstyle.navbar}>
@@ -37,7 +37,7 @@ const Navbar = () => {
         <div style={{ padding: "10px" }}>
           <CreateExamModal open={open} setOpen={setOpen} />
           <PlusOutlined
-            style={{ fontSize: "20px", color: "#4c036e" }}
+            style={{ fontSize: "20px", color: "#1169ba" }}
             onClick={handleClick}
           />
           profile

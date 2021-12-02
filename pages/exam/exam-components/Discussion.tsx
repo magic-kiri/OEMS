@@ -9,7 +9,7 @@ const Discussion = () => {
     <div className={DiscussionStyle.discussion}>
       <div style={{ alignItems: "left" }}>
         <Text>2 Comments</Text>
-        <Divider />
+        <Divider style={{ margin: "15px 0px" }} />
         <div>
           <Text>
             <strong> Kiriti Mukherjee </strong>
@@ -32,8 +32,7 @@ const Discussion = () => {
         </div>
       </div>
       <Divider />
-      <InputCommentBox/>
-      
+      <InputCommentBox />
     </div>
   );
 };

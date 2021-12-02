@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "antd";
-import TabsStyle from "./tabs.module.css";
+import TabsStyle from "./examTabs.module.css";
 import Button from "../../ui-custom-components/Button";
 import Discussion from "./Discussion";
 import Clarification from "./Clarification";
@@ -18,7 +18,7 @@ const AntdTabs = () => {
           <Discussion />
         </TabPane>
         <TabPane tab="Clarifications" key="clarifications">
-          <Clarification/>
+          <Clarification />
         </TabPane>
         <TabPane tab="Participants" key="participants">
           <p>Yet to work</p>
