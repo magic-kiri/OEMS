@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Body from "./exam-components/ExamBody";
+import ExamBody from "./exam-components/ExamBody";
 
 const Id = () => {
   return (
     <div>
       <Navbar />
-      <Body />
+      <ExamBody />
     </div>
   );
 };

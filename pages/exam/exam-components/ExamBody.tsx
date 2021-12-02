@@ -1,6 +1,6 @@
 import React from "react";
 import ExamBodyStyle from "./examBody.module.css";
-import Tabs from "./ExamTabs";
+import ExamTabs from "./ExamTabs";
 import ExamHeaderCard from "./ExamHeaderCard";
 
 const ExamBody = () => {
@@ -12,7 +12,7 @@ const ExamBody = () => {
         courseCode="CSE 334"
         time="01:29:45"
       />
-      <Tabs />
+      <ExamTabs />
     </div>
   );
 };

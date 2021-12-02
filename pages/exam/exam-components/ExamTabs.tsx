@@ -4,15 +4,17 @@ import TabsStyle from "./examTabs.module.css";
 import Button from "../../ui-custom-components/Button";
 import Discussion from "./Discussion";
 import Clarification from "./Clarification";
+import Question from "./Question";
+import Participants from "./Participants";
 
 const { TabPane } = Tabs;
 
-const AntdTabs = () => {
+const ExamTabs = () => {
   return (
     <div className={TabsStyle.tabs}>
       <Tabs centered size="large">
-        <TabPane tab="Question" key="dashboard">
-          <p>Yet to work</p>
+        <TabPane tab="Question" key="question">
+          <Question />
         </TabPane>
         <TabPane tab="Discussion" key="discussion">
           <Discussion />
@@ -21,11 +23,11 @@ const AntdTabs = () => {
           <Clarification />
         </TabPane>
         <TabPane tab="Participants" key="participants">
-          <p>Yet to work</p>
+          <Participants />
         </TabPane>
       </Tabs>
     </div>
   );
 };
 
-export default AntdTabs;
+export default ExamTabs;

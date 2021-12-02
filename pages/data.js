@@ -21,3 +21,5 @@ export const courseList = [
   { key: 5, courseCode: "CSE 331", courseTitle: "Hello4 uhnga bunga" },
   { key: 6, courseCode: "CSE 332", courseTitle: "Hello5 uhnga bunga" },
 ];
+
+export const imageLink = `https://lh3.googleusercontent.com/a-/AOh14Gi9HCQgKwX1cTV6MnmEJyOTneUHAX5P5l4VmZK8SQ=s96-c`;
