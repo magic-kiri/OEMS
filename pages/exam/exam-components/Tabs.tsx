@@ -3,6 +3,7 @@ import { Tabs } from "antd";
 import TabsStyle from "./tabs.module.css";
 import Button from "../../ui-custom-components/Button";
 import Discussion from "./Discussion";
+import Clarification from "./Clarification";
 
 const { TabPane } = Tabs;
 
@@ -17,14 +18,10 @@ const AntdTabs = () => {
           <Discussion />
         </TabPane>
         <TabPane tab="Clarifications" key="clarifications">
-          <p>Content of Tab Pane 3</p>
-          <p>Content of Tab Pane 3</p>
-          <p>Content of Tab Pane 3</p>
+          <Clarification/>
         </TabPane>
         <TabPane tab="Participants" key="participants">
-          <p>Content of Tab Pane 4</p>
-          <p>Content of Tab Pane 4</p>
-          <p>Content of Tab Pane 4</p>
+          <p>Yet to work</p>
         </TabPane>
       </Tabs>
     </div>
