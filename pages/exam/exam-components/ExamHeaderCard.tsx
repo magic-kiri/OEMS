@@ -1,6 +1,5 @@
 import React from "react";
 import cardstyle from "./examHeaderCard.module.css";
-import Button from "../../ui-custom-components/Button";
 import Text from "../../ui-custom-components/Text";
 
 type RunningExamCardProps = {

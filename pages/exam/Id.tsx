@@ -6,7 +6,6 @@ const Id = () => {
   return (
     <div>
       <Navbar />
-
       <Body />
     </div>
   );
