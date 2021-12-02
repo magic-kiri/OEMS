@@ -48,7 +48,7 @@ const ExamCard = ({
         <Text style={{ fontSize: "16px", color: "white", padding: "10px" }}>
           {time}
         </Text>
-        <Button style={{ marginBottom: "15px" }} theme="transparent">
+        <Button style={{ marginBottom: "15px" }} theme="transparentOutlined">
           Participate Now
         </Button>
       </div>

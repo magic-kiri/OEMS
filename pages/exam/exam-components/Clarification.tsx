@@ -1,14 +1,16 @@
 import React from "react";
 import Text from "../../ui-custom-components/Text";
 import ClarificationStyle from "./clarification.module.css";
-import Input from "../../ui-custom-components/InputText";
+import { Divider } from "antd";
+import InputCommentBox from "./InputComment";
 
 const Clarification = () => {
   return (
     <div className={ClarificationStyle.clarification}>
       <div style={{ alignItems: "left" }}>
         <Text>1 Clarification</Text>
-        <div style={{ paddingBottom: "0px", margin: "0px 0px 5px 0px" }}>
+        <Divider />
+        <div>
           <Text>
             <strong> Arnab Sen Sharma </strong>
           </Text>
@@ -17,7 +19,8 @@ const Clarification = () => {
           <br />
         </div>
       </div>
-      <Input style={{ marginTop: "10px" }} />
+      <Divider />
+      <InputCommentBox />
     </div>
   );
 };

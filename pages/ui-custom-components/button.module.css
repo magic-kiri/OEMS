@@ -1,4 +1,4 @@
-.button-transparent {
+.button-transparent-outlined {
   background: transparent;
   color: white;
   border: 1px solid white;
@@ -11,10 +11,22 @@
   border-radius: 10px;
   transition-duration: 0.2s;
 }
-.button-transparent:hover {
+.button-transparent-outlined:hover {
   background-color: white;
   color: #4c036e;
   border: 1px solid white;
+}
+
+.button-transparent {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.45);
+  border: 0px;
+  padding: 0px;
+  height: auto;
+  min-width: 80%;
+  width: -webkit-fill-available;
+  text-align: center;
+  font-size: 16px;
 }
 
 .button-light {

@@ -12,6 +12,8 @@ const getButtonClassName = (theme: string) => {
   switch (theme) {
     case "light":
       return "button-light";
+    case "transparentOutlined":
+      return "button-transparent-outlined";
     case "transparent":
       return "button-transparent";
     default:

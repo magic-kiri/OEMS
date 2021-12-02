@@ -1,14 +1,16 @@
 import React from "react";
 import Text from "../../ui-custom-components/Text";
 import DiscussionStyle from "./discussion.module.css";
-import Input from "../../ui-custom-components/InputText";
+import { Divider } from "antd";
+import InputCommentBox from "./InputComment";
 
 const Discussion = () => {
   return (
     <div className={DiscussionStyle.discussion}>
       <div style={{ alignItems: "left" }}>
         <Text>2 Comments</Text>
-        <div style={{ paddingBottom: "0px", margin: "0px 0px 5px 0px" }}>
+        <Divider />
+        <div>
           <Text>
             <strong> Kiriti Mukherjee </strong>
           </Text>
@@ -29,7 +31,9 @@ const Discussion = () => {
           <br />
         </div>
       </div>
-      <Input style={{ marginTop: "10px" }} />
+      <Divider />
+      <InputCommentBox/>
+      
     </div>
   );
 };

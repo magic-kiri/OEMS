@@ -10,7 +10,7 @@ const { TabPane } = Tabs;
 const AntdTabs = () => {
   return (
     <div className={TabsStyle.tabs}>
-      <Tabs type="card" centered size="large">
+      <Tabs centered size="large">
         <TabPane tab="Question" key="dashboard">
           <p>Yet to work</p>
         </TabPane>
