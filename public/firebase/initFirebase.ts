@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { getStorage, ref } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,8 +14,6 @@ export const firebaseConfig = {
   messagingSenderId: "104639466431",
   appId: "1:104639466431:web:ded3f07cc5c7b66de4af0a",
   measurementId: "G-FCDN68CLX9",
-  clientEmail: "kimuapon@gmail.com",
-  bucketName: "sust-oems",
 };
 
 // Initialize Firebase
@@ -24,3 +22,5 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 const storage = getStorage(firebaseApp);
+
+export const storageRef = ref(storage);

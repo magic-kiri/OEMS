@@ -62,6 +62,7 @@ export default NextAuth({
         sub: token.id?.toString(),
         name: token.name,
         email: token.email,
+        picture: token.picture,
         iat: Date.now() / 1000,
         exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
         "https://hasura.io/jwt/claims": {
@@ -109,6 +110,7 @@ export default NextAuth({
       });
       session.id = token.id;
       session.token = encodedToken;
+      session.image = token.picture;
       return Promise.resolve(session);
     },
     async jwt(token, user, account, profile, isNewUser) {

@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { Provider, useSession } from "next-auth/client";
 import React, { useEffect, useState } from "react";
 import "../styles.css";
+import "antd/dist/antd.css";
 
 // import types
 import { getSignInInformation } from "./utils/initalLoader";

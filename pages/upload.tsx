@@ -2,25 +2,30 @@ import React from "react";
 import { Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+import { storageRef } from "../public/firebase/initFirebase";
 const { Dragger } = Upload;
 
 const props = {
   name: "file",
   multiple: false,
-  action: '/api/image',
   onChange(info) {
-    console.log(info.file)
     const { status } = info.file;
     if (status !== "uploading") {
       console.log(info.file, info.fileList);
     }
     if (status === "done") {
       message.success(`${info.file.name} file uploaded successfully.`);
-      const { response } = info.file;
-      console.log(response.payload)
     } else if (status === "error") {
       message.error(`${info.file.name} file upload failed.`);
     }
+  },
+  beforeUpload(file, fileList) {
+    const fileRef = ref(storageRef, file.name);
+    uploadBytes(fileRef, file).then((snapshot) => {
+      getDownloadURL(fileRef).then((url) => console.log({ url }));
+      console.log({ snapshot });
+    });
   },
   onDrop(e) {
     console.log("Dropped files", e.dataTransfer.files);
@@ -30,7 +35,6 @@ const props = {
 const upload = () => {
   return (
     <>
-      <input type='file'></input>
       <Dragger {...props}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
