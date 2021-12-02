@@ -20,13 +20,15 @@ const ExamHeaderCard = ({
 }: RunningExamCardProps) => {
   return (
     <div className={cardstyle.examHeaderCard}>
-      <Text style={{ margin: "unset", fontSize: "16px", color: "white" }}>
+      <Text style={{ marginTop: "10px", fontSize: "16px", color: "white" }}>
         {status} : {courseCode}
       </Text>
-      <Text style={{ margin: "unset", fontSize: "24px", color: "white" }}>
+      <Text style={{ margin: "-5px", fontSize: "24px", color: "white" }}>
         <strong> {title} </strong>
       </Text>
-      <Text style={{ fontSize: "16px", color: "white" }}>{time}</Text>
+      <Text style={{ marginBottom: "10px", fontSize: "16px", color: "white" }}>
+        {time}
+      </Text>
     </div>
   );
 };
