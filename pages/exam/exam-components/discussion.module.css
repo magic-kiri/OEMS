@@ -4,6 +4,11 @@
   margin: 0px 20px 20px 20px;
 }
 
+.singleComment {
+  display: flex;
+  flex-direction: row;
+}
+
 .commentFooter {
   display: flex;
   flex-direction: row;
