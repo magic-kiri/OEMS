@@ -1,0 +1,11 @@
+.singleComment {
+  display: flex;
+  flex-direction: row;
+}
+
+.myImage {
+  margin: 5px 15px 0px 0px;
+}
+.myImage img {
+  border-radius: 50px;
+}

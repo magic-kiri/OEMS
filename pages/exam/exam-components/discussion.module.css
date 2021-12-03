@@ -3,3 +3,22 @@
   flex-direction: column;
   margin: 0px 20px 20px 20px;
 }
+
+.singleComment {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.myImage {
+  margin: 5px 15px 0px 0px;
+}
+.myImage img {
+  border-radius: 50px;
+}
