@@ -3,8 +3,13 @@ import Text from "../../ui-custom-components/Text";
 import DiscussionStyle from "./discussion.module.css";
 import { Divider } from "antd";
 import InputCommentBox from "./InputComment";
+import { imageLink } from "../../data";
+import Image from "next/image";
 
 const Discussion = () => {
+  const myLoader = () => {
+    return imageLink;
+  };
   return (
     <div className={DiscussionStyle.discussion}>
       <div style={{ alignItems: "left" }}>
@@ -32,7 +37,18 @@ const Discussion = () => {
         </div>
       </div>
       <Divider />
-      <InputCommentBox />
+      <div className={DiscussionStyle.commentFooter}>
+        <div className={DiscussionStyle.myImage}>
+          <Image
+            loader={myLoader}
+            src="profilePicture.png"
+            alt="profilePicture"
+            height="35vh"
+            width="35vw"
+          />
+        </div>
+        <InputCommentBox />
+      </div>
     </div>
   );
 };
