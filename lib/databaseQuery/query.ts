@@ -12,3 +12,15 @@ export const query = async (query: DocumentNode) => {
     return { message: err };
   }
 };
+
+export const mutation = async (query: DocumentNode) => {
+  try {
+    const { data } = await client.mutate({
+      mutation: query,
+    });
+
+    return data;
+  } catch (err) {
+    return { message: err };
+  }
+};

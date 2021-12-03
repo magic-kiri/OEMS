@@ -12,3 +12,9 @@ export type UserInfo = {
   email: string;
   adminRole: boolean;
 };
+
+export type UpsertUserType = {
+  name: string,
+  email: string,
+  imageUrl: string
+}

@@ -1,6 +1,8 @@
 import NextAuth, { User } from "next-auth";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
+import { upsertUser } from "../helper/authentication";
+import { UpsertUserType } from "../../../lib/types/types";
 
 const options = {
   site: process.env.NEXTAUTH_URL,
@@ -111,6 +113,14 @@ export default NextAuth({
       session.id = token.id;
       session.token = encodedToken;
       session.image = token.picture;
+
+      const user: UpsertUserType = {
+        name: session?.user?.name as string,
+        email: session?.user?.email as string,
+        imageUrl: session?.user?.image as string,
+      };
+      const { adminRole } = await upsertUser(user);
+      session.adminRole = adminRole;
       return Promise.resolve(session);
     },
     async jwt(token, user, account, profile, isNewUser) {
