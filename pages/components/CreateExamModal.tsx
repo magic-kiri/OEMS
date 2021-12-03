@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../ui-custom-components/Button";
-import Input from "../ui-custom-components/InputText";
-import Select from "../ui-custom-components/Select";
-import Option from "../ui-custom-components/Option";
-import Modal from "../ui-custom-components/Modal";
-import DatePicker from "../ui-custom-components/DatePicker";
-import { RangePicker } from "../ui-custom-components/TimePicker";
+import Button from "../../src/ui-custom-components/Button";
+import Input from "../../src/ui-custom-components/InputText";
+import Select from "../../src/ui-custom-components/Select";
+import Option from "../../src/ui-custom-components/Option";
+import Modal from "../../src/ui-custom-components/Modal";
+import DatePicker from "../../src/ui-custom-components/DatePicker";
+import { RangePicker } from "../../src/ui-custom-components/TimePicker";
 
 import CreateExamModalStyle from "./createExamModal.module.css";
 

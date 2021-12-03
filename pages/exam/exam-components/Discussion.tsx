@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../../ui-custom-components/Text";
+import Text from "../../../src/ui-custom-components/Text";
 import DiscussionStyle from "./discussion.module.css";
 import { Divider } from "antd";
 import InputCommentBox from "./InputComment";

@@ -1,7 +1,7 @@
 import React from "react";
 import cardstyle from "./runningExamCard.module.css";
-import Button from "../ui-custom-components/Button";
-import Text from "../ui-custom-components/Text";
+import Button from "../../src/ui-custom-components/Button";
+import Text from "../../src/ui-custom-components/Text";
 
 type RunningExamCardProps = {
   title: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "antd";
 import TabsStyle from "./examTabs.module.css";
-import Button from "../../ui-custom-components/Button";
+import Button from "../../../src/ui-custom-components/Button";
 import Discussion from "./Discussion";
 import Clarification from "./Clarification";
 import Question from "./Question";

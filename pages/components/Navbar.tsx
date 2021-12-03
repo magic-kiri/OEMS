@@ -3,7 +3,7 @@ import navstyle from "./navbar.module.css";
 import navlogo from "../../public/image/sustlogo.png";
 import Image from "next/image";
 import { PlusOutlined } from "@ant-design/icons";
-import Title from "../ui-custom-components/Title";
+import Title from "../../src/ui-custom-components/Title";
 import CreateExamModal from "./CreateExamModal";
 import NavbarTabs from "./NavbarTabs";
 import { useSession } from "next-auth/client";

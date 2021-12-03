@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../../ui-custom-components/Text";
+import Text from "../../../src/ui-custom-components/Text";
 import { imageLink } from "../../data";
 import Image from "next/image";
 import SingleCommentStyle from "./singleComment.module.css";

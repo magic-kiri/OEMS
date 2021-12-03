@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../../ui-custom-components/InputText";
-import Button from "../../ui-custom-components/Button";
+import Input from "../../../src/ui-custom-components/InputText";
+import Button from "../../../src/ui-custom-components/Button";
 import { SendOutlined } from "@ant-design/icons";
 
 const InputCommentBox = () => {

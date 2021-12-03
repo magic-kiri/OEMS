@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../ui-custom-components/Button";
-import Input from "../ui-custom-components/InputText";
-import Modal from "../ui-custom-components/Modal";
+import Button from "../../src/ui-custom-components/Button";
+import Input from "../../src/ui-custom-components/InputText";
+import Modal from "../../src/ui-custom-components/Modal";
 
 import EnterExamModalStyle from "./enterExamModal.module.css";
 
