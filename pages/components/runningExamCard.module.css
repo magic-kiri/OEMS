@@ -10,7 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(#4b036d, #7f1dab);
+  background-image: linear-gradient(#064a8a, #1890ff);
 }
 
 .cardRunning:hover {

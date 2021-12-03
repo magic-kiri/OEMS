@@ -1,4 +1,4 @@
-.button-transparent {
+.button-transparent-outlined {
   background: transparent;
   color: white;
   border: 1px solid white;
@@ -11,16 +11,28 @@
   border-radius: 10px;
   transition-duration: 0.2s;
 }
-.button-transparent:hover {
+.button-transparent-outlined:hover {
   background-color: white;
-  color: #4c036e;
+  color: #0e5496;
   border: 1px solid white;
+}
+
+.button-transparent {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.45);
+  border: 0px;
+  padding: 0px;
+  height: auto;
+  min-width: 80%;
+  width: -webkit-fill-available;
+  text-align: center;
+  font-size: 16px;
 }
 
 .button-light {
   background: transparent;
-  border: 1.5px solid #4c036e;
-  color: #4c036e;
+  border: 1.5px solid #1169ba;
+  color: #1169ba;
   padding: 5px 15px;
   height: auto;
   text-align: center;
@@ -30,15 +42,15 @@
   transition-duration: 0.2s;
 }
 .button-light:hover {
-  background-color: #4c036e;
+  background-color: #1169ba;
   color: white;
-  border: 1.5px solid #4c036e;
+  border: 1.5px solid #1169ba;
 }
 
 .button-dark {
-  background: #4c036e;
+  background: #1169ba;
   color: white;
-  border: 1.5px solid #4c036e;
+  border: 1.5px solid #1169ba;
   padding: 5px 15px;
   height: auto;
   width: auto;
@@ -50,6 +62,6 @@
 }
 .button-dark:hover {
   background-color: white;
-  color: #4c036e;
-  border: 1.5px solid #4c036e;
+  color: #1169ba;
+  border: 1.5px solid #1169ba;
 }

@@ -13,7 +13,7 @@
 }
 
 .cardNormal:hover {
-  box-shadow: -4px 0px 0px 0px #7f1dab;
+  box-shadow: -4px 0px 0px 0px #1890ff;
   margin-left: 10px;
   cursor: pointer;
 }

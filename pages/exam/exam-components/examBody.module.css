@@ -1,9 +1,13 @@
-.bodyrest {
-  height: 100%;
+.examBody {
   margin-top: 90px;
   background-color: #fafafa;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: -10;
+}
+
+.tabs {
+  width: 60%;
 }
