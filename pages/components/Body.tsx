@@ -39,7 +39,7 @@ const Body = () => {
         {exams.map((exam) => (
           <ExamCard
             key={exam.id}
-            title={exam.course.course_title}
+            title={exam.exam_title}
             courseCode={exam.course.course_code}
             time="2:30PM, 29 October 2019"
           />

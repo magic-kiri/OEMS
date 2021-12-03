@@ -7,7 +7,7 @@ function onChange(date: any, dateString: any) {
   console.log(date, dateString);
 }
 
-const TimePicker = ({ ...props }: DatePickerProps) => {
+const DatePicker = ({ ...props }: DatePickerProps) => {
   return <AntdDatePicker {...props} onChange={onChange}></AntdDatePicker>;
 };
-export default TimePicker;
+export default DatePicker;

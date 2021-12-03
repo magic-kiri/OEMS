@@ -18,6 +18,15 @@ export const getAllExamsQuery: () => DocumentNode = () => gql`
   }
 `;
 
+export const getAllCourseQuery: () => DocumentNode = () => gql`
+  query MyQuery {
+    courses {
+      course_code
+      course_title
+    }
+  }
+`;
+
 export const getSignInInformationQuery: (email: string) => DocumentNode = (
   email
 ) => gql`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import navstyle from "./navbar.module.css";
 import navlogo from "../../public/image/sustlogo.png";
 import Image from "next/image";
@@ -12,7 +12,7 @@ import { Row, Col } from "antd";
 import { imageLink } from "../data";
 
 const Navbar = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [session, loading] = useSession();
   const handleClick = () => {
     setOpen((value) => !value);
@@ -33,11 +33,11 @@ const Navbar = () => {
       </div>
     </div>
   );
-  
+
   const myLoader = () => {
     return session?.image;
   };
-  const rightComponent = ( session?
+  const rightComponent = session ? (
     <div
       style={{
         display: "flex",
@@ -64,7 +64,9 @@ const Navbar = () => {
           width="45vw"
         />
       </div>
-    </div>: <></>
+    </div>
+  ) : (
+    <></>
   );
 
   return (
