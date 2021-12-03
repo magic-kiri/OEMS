@@ -6,12 +6,14 @@ import { PlusOutlined } from "@ant-design/icons";
 import Title from "../ui-custom-components/Title";
 import CreateExamModal from "./CreateExamModal";
 import NavbarTabs from "./NavbarTabs";
+import { useSession } from "next-auth/client";
 
 import { Row, Col } from "antd";
 import { imageLink } from "../data";
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
+  const [session, loading] = useSession();
   const handleClick = () => {
     setOpen((value) => !value);
   };
@@ -33,9 +35,9 @@ const Navbar = () => {
   );
   
   const myLoader = () => {
-    return imageLink;
+    return session?.image;
   };
-  const rightComponent = (
+  const rightComponent = ( session?
     <div
       style={{
         display: "flex",
@@ -54,6 +56,7 @@ const Navbar = () => {
 
       <div className={navstyle.myImage}>
         <Image
+          //@ts-ignore
           loader={myLoader}
           src="profilePicture.png"
           alt="profilePicture"
@@ -61,7 +64,7 @@ const Navbar = () => {
           width="45vw"
         />
       </div>
-    </div>
+    </div>: <></>
   );
 
   return (
