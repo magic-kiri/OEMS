@@ -7,10 +7,10 @@ import Modal from "../ui-custom-components/Modal";
 import DatePicker from "../ui-custom-components/DatePicker";
 import { RangePicker } from "../ui-custom-components/TimePicker";
 
-import ModalStyle from "./createExamModal.module.css";
+import CreateExamModalStyle from "./createExamModal.module.css";
 
 import { courseList } from "../data";
-
+//@ts-ignore
 export default function CreateExamModal({ setOpen, open }) {
   const handleSubmit = () => {
     setOpen(false);
@@ -20,7 +20,7 @@ export default function CreateExamModal({ setOpen, open }) {
   const handleClickClose = () => {
     setOpen(false);
   };
-
+  //@ts-ignore
   function handleChangeSelect(value) {
     console.log(`selected ${value}`);
   }
@@ -57,29 +57,29 @@ export default function CreateExamModal({ setOpen, open }) {
       >
         <Select
           size="large"
-          className={ModalStyle.inputStyle}
+          className={CreateExamModalStyle.inputStyle}
           placeholder="Course Code"
         >
           {courseCodeOptions}
         </Select>
         <Select
           size="large"
-          className={ModalStyle.inputStyle}
+          className={CreateExamModalStyle.inputStyle}
           placeholder="Course Title"
         >
           {courseTitleOptions}
         </Select>
         <Input
           size="large"
-          className={ModalStyle.inputStyle}
+          className={CreateExamModalStyle.inputStyle}
           placeholder="Exam Title"
         ></Input>
         <DatePicker
           size="large"
-          className={ModalStyle.inputStyle}
+          className={CreateExamModalStyle.inputStyle}
           placeholder="Select Date"
         ></DatePicker>
-        <RangePicker size="large" className={ModalStyle.inputStyle} />
+        <RangePicker size="large" className={CreateExamModalStyle.inputStyle} />
       </Modal>
     </div>
   );
