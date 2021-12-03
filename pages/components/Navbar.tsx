@@ -2,7 +2,7 @@ import React from "react";
 import navstyle from "./navbar.module.css";
 import navlogo from "../../public/image/sustlogo.png";
 import Image from "next/image";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusCircleOutlined, HomeOutlined } from "@ant-design/icons";
 import Title from "../../src/ui-custom-components/Title";
 import CreateExamModal from "./CreateExamModal";
 import NavbarTabs from "./NavbarTabs";
@@ -33,23 +33,25 @@ const Navbar = () => {
       </div>
     </div>
   );
-  
+
   const myLoader = () => {
     return session?.image;
   };
-  const rightComponent = ( session?
+  const rightComponent = session ? (
     <div
       style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         padding: "10px",
+        justifyContent: "flex-end",
+        marginRight: "10px",
       }}
     >
       <div>
         <CreateExamModal open={open} setOpen={setOpen} />
-        <PlusOutlined
-          style={{ fontSize: "20px", color: "#1169ba" }}
+        <PlusCircleOutlined
+          style={{ fontSize: "24px", color: "#1890ff", marginLeft: "15px" }}
           onClick={handleClick}
         />
       </div>
@@ -64,7 +66,9 @@ const Navbar = () => {
           width="45vw"
         />
       </div>
-    </div>: <></>
+    </div>
+  ) : (
+    <></>
   );
 
   return (
@@ -74,9 +78,7 @@ const Navbar = () => {
         <Col span={4}>
           <NavbarTabs />
         </Col>
-        <Col span={10} push={8}>
-          {rightComponent}
-        </Col>
+        <Col span={10}>{rightComponent}</Col>
       </Row>
     </div>
   );
