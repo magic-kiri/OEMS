@@ -16,44 +16,9 @@ const Discussion = () => {
       <div style={{ alignItems: "left" }}>
         <Text>2 Comments</Text>
         <Divider style={{ margin: "15px 0px" }} />
-        <div className={DiscussionStyle.singleComment}>
-          <div className={DiscussionStyle.myImage}>
-            <Image
-              loader={myLoader}
-              src="profilePicture.png"
-              alt="profilePicture"
-              height="35vh"
-              width="35vw"
-            />
-          </div>
-          <div>
-            <Text>
-              <strong> Quamrul Islam </strong>
-            </Text>
-            <br />
-            <Text>We can see this exam from a Nationalist point of view.</Text>
-            <br />
-          </div>
-        </div>
-        <div className={DiscussionStyle.singleComment}>
-          <div className={DiscussionStyle.myImage}>
-            <Image
-              loader={myLoader}
-              src="profilePicture.png"
-              alt="profilePicture"
-              height="35vh"
-              width="35vw"
-            />
-          </div>
-          <div>
-            <Text>
-              <strong> Quamrul Islam </strong>
-            </Text>
-            <br />
-            <Text>We can see this exam from a Nationalist point of view.</Text>
-            <br />
-          </div>
-        </div>
+        <SingleComment />
+        <SingleComment />
+        <SingleComment />
       </div>
       <Divider />
       <div className={DiscussionStyle.commentFooter}>

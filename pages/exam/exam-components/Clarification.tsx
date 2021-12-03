@@ -16,25 +16,7 @@ const Clarification = () => {
       <div style={{ alignItems: "left" }}>
         <Text>1 Clarification</Text>
         <Divider style={{ margin: "15px 0px" }} />
-        <div className={ClarificationStyle.singleClarification}>
-          <div className={ClarificationStyle.myImage}>
-            <Image
-              loader={myLoader}
-              src="profilePicture.png"
-              alt="profilePicture"
-              height="35vh"
-              width="35vw"
-            />
-          </div>
-          <div>
-            <Text>
-              <strong> Arnab Sen Sharma </strong>
-            </Text>
-            <br />
-            <Text>See the zip file.</Text>
-            <br />
-          </div>
-        </div>
+        <SingleClarification />
       </div>
       <Divider />
       <div className={ClarificationStyle.commentFooter}>
