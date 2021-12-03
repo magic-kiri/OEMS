@@ -6,12 +6,14 @@ import { UserContext } from "./_app";
 import Loading from "./components/Loading";
 
 function Home() {
-  const { userInfo, setUserInfo } = useContext(UserContext);
   const [session, loading] = useSession();
   return (
     <div>
       {loading ? (
-        <Loading/>
+        <>
+          <Navbar />
+          <Loading />
+        </>
       ) : (
         <>
           <Navbar />
