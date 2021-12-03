@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import { UserContext } from "./_app";
+import Loading from "./components/Loading";
 
 function Home() {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -10,7 +11,7 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <>PLEASE LOGIN FIRST</>
+        <Loading/>
       ) : (
         <>
           <Navbar />

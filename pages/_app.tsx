@@ -8,23 +8,25 @@ import "antd/dist/antd.css";
 import { getSignInInformation } from "./utils/initalLoader";
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
-import { UserInfo } from "../lib/types/types";
+import { UserInfoType } from "../lib/types/types";
 
 // Create context for UserInformation
 export const UserContext = React.createContext(null);
 
 const Loader = ({ children }) => {
   const [session, loading] = useSession();
-  const [userInfo, setUserInfo] = useState<UserInfo>();
+  const [userInfo, setUserInfo] = useState<UserInfoType>();
 
   const loadUserInfo = async () => {
     const email = session?.user?.email;
     const name = session?.user?.name;
     const adminRole = session?.adminRole;
+    const imageUrl = session?.image;
     setUserInfo({
       name: name as string,
       email: email as string,
       adminRole: adminRole as boolean,
+      imageUrl: imageUrl as string
     });
   };
 
