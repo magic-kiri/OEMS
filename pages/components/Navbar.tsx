@@ -16,60 +16,52 @@ const Navbar = () => {
     setOpen((value) => !value);
   };
 
-  const leftComponent = React.useMemo(
-    () => (
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ padding: "10px", marginLeft: "10px" }}>
-          <Image src={navlogo} alt="sustlogo" height="55vh" width="50vw" />
-        </div>
-        <div style={{ padding: "10px" }}>
-          <Title
-            level={5}
-            style={{ marginBottom: "-5px", fontSize: "16.25px" }}
-          >
-            <strong>Shahjalal University of Science & Technology</strong>
-          </Title>
-          <Title level={4} style={{ margin: "unset", fontSize: "21px" }}>
-            <strong>Online Exam Management System</strong>
-          </Title>
-        </div>
+  const leftComponent = (
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ padding: "10px", marginLeft: "10px" }}>
+        <Image src={navlogo} alt="sustlogo" height="55vh" width="50vw" />
       </div>
-    ),
-    []
+      <div style={{ padding: "10px" }}>
+        <Title level={5} style={{ marginBottom: "-5px", fontSize: "16.25px" }}>
+          <strong>Shahjalal University of Science & Technology</strong>
+        </Title>
+        <Title level={4} style={{ margin: "unset", fontSize: "21px" }}>
+          <strong>Online Exam Management System</strong>
+        </Title>
+      </div>
+    </div>
   );
+  
   const myLoader = () => {
     return imageLink;
   };
-  const rightComponent = React.useMemo(
-    () => (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          padding: "10px",
-        }}
-      >
-        <div>
-          <CreateExamModal open={open} setOpen={setOpen} />
-          <PlusOutlined
-            style={{ fontSize: "20px", color: "#1169ba" }}
-            onClick={handleClick}
-          />
-        </div>
-
-        <div className={navstyle.myImage}>
-          <Image
-            loader={myLoader}
-            src="profilePicture.png"
-            alt="profilePicture"
-            height="45vh"
-            width="45vw"
-          />
-        </div>
+  const rightComponent = (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        padding: "10px",
+      }}
+    >
+      <div>
+        <CreateExamModal open={open} setOpen={setOpen} />
+        <PlusOutlined
+          style={{ fontSize: "20px", color: "#1169ba" }}
+          onClick={handleClick}
+        />
       </div>
-    ),
-    []
+
+      <div className={navstyle.myImage}>
+        <Image
+          loader={myLoader}
+          src="profilePicture.png"
+          alt="profilePicture"
+          height="45vh"
+          width="45vw"
+        />
+      </div>
+    </div>
   );
 
   return (

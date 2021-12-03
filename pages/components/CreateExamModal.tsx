@@ -11,7 +11,6 @@ import ModalStyle from "./createExamModal.module.css";
 
 import { courseList } from "../data";
 
-// @ts-ignore
 export default function CreateExamModal({ setOpen, open }) {
   const handleSubmit = () => {
     setOpen(false);
