@@ -8,7 +8,7 @@ import { getAllExamsQuery } from "../../lib/graphqlQuery/graphqlQuery";
 
 import RunningExamCard from "./RunningExamCard";
 import ExamCard from "./ExamCard";
-import Loading from "./Loading";
+import Loading from "../../src/ui-custom-components/Loading";
 import { ExamType } from "../../lib/types/types";
 
 const Body = () => {

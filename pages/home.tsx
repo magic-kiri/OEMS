@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import { UserContext } from "./_app";
-import Loading from "./components/Loading";
+import Loading from "../src/ui-custom-components/Loading";
 
 function Home() {
   const [session, loading] = useSession();
