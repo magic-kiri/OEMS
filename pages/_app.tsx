@@ -18,10 +18,14 @@ const Loader = ({ children }) => {
   const [userInfo, setUserInfo] = useState<UserInfo>();
 
   const loadUserInfo = async () => {
-    const email = session.user.email;
-    const name = session.user?.name;
-    const { adminRole } = await getSignInInformation(email);
-    setUserInfo({ name, email, adminRole });
+    const email = session?.user?.email;
+    const name = session?.user?.name;
+    const adminRole = session?.adminRole;
+    setUserInfo({
+      name: name as string,
+      email: email as string,
+      adminRole: adminRole as boolean,
+    });
   };
 
   useEffect(() => {

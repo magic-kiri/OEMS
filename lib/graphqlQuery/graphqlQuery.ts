@@ -33,7 +33,7 @@ export const getUpsertQueryWithEmail: (
   email: string,
   name: string,
   imageUrl: string
-) => DocumentNode = (email, name, imageUrl) => gql`
+) => DocumentNode = (name, email, imageUrl) => gql`
   mutation random {
     insert_users_one(
       object: {
@@ -41,7 +41,10 @@ export const getUpsertQueryWithEmail: (
         imageUrl: "${imageUrl}"
         name: "${name}"
       }
-      on_conflict: { constraint: users_email_key, update_columns: [imageUrl, name] }
+      on_conflict: {
+        constraint: users_email_key
+        update_columns: [imageUrl, name]
+      }
     ) {
       imageUrl
       name
