@@ -28,3 +28,25 @@ export const getSignInInformationQuery: (email: string) => DocumentNode = (
         }
     }
 `;
+
+export const getUpsertQueryWithEmail: (
+  email: string,
+  name: string,
+  imageUrl: string
+) => DocumentNode = (email, name, imageUrl) => gql`
+  mutation random {
+    insert_users_one(
+      object: {
+        email: "${email}"
+        imageUrl: "${imageUrl}"
+        name: "${name}"
+      }
+      on_conflict: { constraint: users_email_key, update_columns: [imageUrl, name] }
+    ) {
+      imageUrl
+      name
+      email
+      adminRole
+    }
+  }
+`;
