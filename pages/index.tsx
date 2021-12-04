@@ -3,13 +3,9 @@ import Image from "next/image";
 import sustlogo from "../public/image/sustlogo.png";
 import indexstyle from "./index.module.css";
 import Button from "../src/ui-custom-components/Button";
+import { logIn } from "./utils/authentication";
 
 export default function Home() {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push("/auth");
-  };
-
   return (
     <div className={indexstyle.indexpage}>
       <div>
@@ -25,7 +21,7 @@ export default function Home() {
         Shahjalal University of Science and Technology
       </h3>
       <h1 style={{ marginTop: "unset" }}>Online Exam Management System</h1>
-      <Button onClick={handleClick} theme="light">
+      <Button onClick={logIn} theme="light">
         Get Started
       </Button>
     </div>
