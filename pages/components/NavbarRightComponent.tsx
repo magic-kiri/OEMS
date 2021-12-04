@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSession } from "next-auth/client";
 import Image from "next/image";
 import CreateExamModal from "./CreateExamModal";
@@ -12,6 +12,7 @@ const NavbarRightComponenet = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [session, loading] = useSession();
   const [openPermission, setOpenPermission] = useState<boolean>(false);
+  const ref = useRef(null);
 
   const handleClick = () => {
     setOpen((value) => !value);
@@ -57,9 +58,10 @@ const NavbarRightComponenet = () => {
         />
       </div>
 
-      <>
+      <div ref={ref}>
         <PermissionModal open={openPermission} setOpen={setOpenPermission} />
-        <Dropdown overlay={<></>} items={dropDownItems} trigger={["click"]}>
+        {/* @ts-ignore */}
+        <Dropdown getPopupContainer={() => ref.current} overlay={<></>} items={dropDownItems} trigger={["click"] }>
           <a onClick={(e) => e.preventDefault()}>
             <div className={navstyle.myImage}>
               <Image
@@ -73,7 +75,7 @@ const NavbarRightComponenet = () => {
             </div>
           </a>
         </Dropdown>
-      </>
+      </div>
     </div>
   ) : (
     <></>
