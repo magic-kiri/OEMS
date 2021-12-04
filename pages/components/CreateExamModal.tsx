@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../../src/ui-custom-components/Button";
 import Input from "../../src/ui-custom-components/InputText";
 import Select from "../../src/ui-custom-components/Select";
@@ -9,11 +9,15 @@ import { RangePicker } from "../../src/ui-custom-components/TimePicker";
 
 import CreateExamModalStyle from "./createExamModal.module.css";
 
-import { courseList } from "../data";
 import { useQuery } from "@apollo/client";
-import { getAllCourseQuery } from "../../lib/graphqlQuery/graphqlQuery";
+import {
+  getAllCourseQuery,
+  getInsertExamQuery,
+} from "../../lib/graphqlQuery/graphqlQuery";
 import Loading from "../../src/ui-custom-components/Loading";
-import { CourseType, ExamType } from "../../lib/types/types";
+import { CourseType, ExamType, InsertExamType } from "../../lib/types/types";
+import { mutation } from "../../lib/databaseQuery/query";
+import { UserContext } from "../_app";
 
 const nullExam = {
   course_code: undefined,
@@ -22,6 +26,7 @@ const nullExam = {
   start_date: undefined,
   start_time: undefined,
   end_time: undefined,
+  creatorEmail: undefined,
 };
 
 export default function CreateExamModal({
@@ -31,7 +36,12 @@ export default function CreateExamModal({
   open: boolean;
   setOpen: (value: boolean) => void;
 }) {
-  const [examInfo, setExamInfo] = useState(nullExam);
+  const { userInfo } = useContext(UserContext);
+  //@ts-ignore
+  const [examInfo, setExamInfo] = useState<InsertExamType>({
+    ...nullExam,
+    creatorEmail: userInfo?.email,
+  });
 
   const { data, loading, error } = useQuery(getAllCourseQuery());
   const [courses, setCourses] = useState<CourseType[]>([]);
@@ -41,9 +51,34 @@ export default function CreateExamModal({
     }
   }, [data]);
 
-  const handleSubmit = () => {
-    setOpen(false);
-    alert(JSON.stringify(examInfo));
+  const handleSubmit = async () => {
+    const {
+      course_code,
+      course_title,
+      exam_title,
+      start_date,
+      start_time,
+      end_time,
+    } = examInfo;
+    if (
+      course_code &&
+      course_title &&
+      exam_title &&
+      start_date &&
+      start_time &&
+      end_time
+    ) {
+      try {
+        const res = await mutation(getInsertExamQuery(examInfo));
+        alert(`Exam ID: ${res.insert_exams_one.id}`);
+      } catch (e) {
+        console.log(e);
+        alert(`Failed to create exam! ${e}`);
+      }
+      setOpen(false);
+    } else {
+      alert("Please fill up properly!");
+    }
   };
 
   const handleClickClose = () => {
@@ -93,10 +128,17 @@ export default function CreateExamModal({
     setExamInfo((prev) => ({ ...prev, exam_title: e.target.value }));
   };
 
-  // const startDateChange = (date: any, dateString: string) => {
-  //   setExamInfo((prev) => ({ ...prev, exam_title: dateString.toString() }));
-  // };
+  const startDateChange = (date: any, dateString: string) => {
+    setExamInfo((prev) => ({ ...prev, start_date: date }));
+  };
 
+  const timeRangeChange = (date: any, dateString: string) => {
+    setExamInfo((prev) => ({
+      ...prev,
+      start_time: date[0],
+      end_time: date[1],
+    }));
+  };
   return (
     <div>
       <Modal
@@ -147,9 +189,14 @@ export default function CreateExamModal({
           className={CreateExamModalStyle.inputStyle}
           placeholder="Select Date"
           format="DD/MM/YYYY"
-          // onChange={startDateChange}
+          onChange={startDateChange}
         ></DatePicker>
-        <RangePicker size="large" className={CreateExamModalStyle.inputStyle} />
+        <RangePicker
+          size="large"
+          use12Hours
+          className={CreateExamModalStyle.inputStyle}
+          onChange={timeRangeChange}
+        />
       </Modal>
     </div>
   );

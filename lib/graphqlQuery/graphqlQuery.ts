@@ -1,11 +1,14 @@
 import { DocumentNode, gql } from "@apollo/client";
+import { ExamType, InsertExamType } from "../types/types";
 
 export const getAllExamsQuery: () => DocumentNode = () => gql`
   query MyQuery {
     exams {
-      end_time
       id
+      exam_title
+      start_date
       start_time
+      end_time
       course {
         course_title
         course_code
@@ -62,3 +65,24 @@ export const getUpsertQueryWithEmail: (
     }
   }
 `;
+
+export const getInsertExamQuery: (examInfo: InsertExamType) => DocumentNode = (
+  examInfo
+) => {
+  return gql`
+    mutation MyMutation {
+        insert_exams_one(
+          object: {
+            course_code: "${examInfo.course_code}"
+            creatorEmail: "${examInfo.creatorEmail}"
+            end_time: "${examInfo.end_time}"
+            start_time: "${examInfo.start_time}"
+            exam_title: "${examInfo.exam_title}"
+            start_date: "${examInfo.start_date}"
+          }
+        ) {
+          id
+        }
+      }
+    `;
+};

@@ -3,11 +3,7 @@ import { DatePicker as AntdDatePicker } from "antd";
 
 type DatePickerProps = React.ComponentProps<typeof AntdDatePicker> & {};
 
-function onChange(date: any, dateString: any) {
-  console.log(date, dateString);
-}
-
 const DatePicker = ({ ...props }: DatePickerProps) => {
-  return <AntdDatePicker {...props} onChange={onChange}></AntdDatePicker>;
+  return <AntdDatePicker {...props} />;
 };
 export default DatePicker;
