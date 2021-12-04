@@ -23,7 +23,7 @@ export default function PermissionModal({ setOpen, open }) {
 
   return (
     <Modal
-      visible={true}
+      visible={open}
       title="Permission for Teacher Role"
       onCancel={handleClickClose}
       footer={[
