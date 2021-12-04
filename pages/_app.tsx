@@ -5,38 +5,37 @@ import "../styles.css";
 import "antd/dist/antd.css";
 
 // import types
-import { getSignInInformation } from "./utils/initalLoader";
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 import { UserInfoType } from "../lib/types/types";
+import { nullUserContext } from "./utils/helper";
 
 // Create context for UserInformation
-export const UserContext = React.createContext(null);
-
+export const UserContext = React.createContext(nullUserContext);
+//@ts-ignore
 const Loader = ({ children }) => {
   const [session, loading] = useSession();
   const [userInfo, setUserInfo] = useState<UserInfoType>();
 
-  const loadUserInfo = async () => {
-    const email = session?.user?.email;
-    const name = session?.user?.name;
-    const adminRole = session?.adminRole;
-    const imageUrl = session?.image;
-    setUserInfo({
-      name: name as string,
-      email: email as string,
-      adminRole: adminRole as boolean,
-      imageUrl: imageUrl as string
-    });
-  };
-
   useEffect(() => {
-    if (session?.user?.email) {
-      loadUserInfo();
+    if (session?.user) {
+      const email = session?.user?.email;
+      const name = session?.user?.name;
+      const adminRole = session?.adminRole;
+      const imageUrl = session?.image;
+      setUserInfo({
+        name: name as string,
+        email: email as string,
+        adminRole: adminRole as boolean,
+        imageUrl: imageUrl as string,
+      });
+    } else {
+      setUserInfo(undefined);
     }
   }, [session]);
 
   return (
+    //@ts-ignore
     <UserContext.Provider value={{ userInfo, setUserInfo }}>
       <ApolloProvider client={client}>{children}</ApolloProvider>
     </UserContext.Provider>
@@ -46,21 +45,8 @@ const Loader = ({ children }) => {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider
-      // Provider options are not required but can be useful in situations where
-      // you have a short session maxAge time. Shown here with default values.
       options={{
-        // Client Max Age controls how often the useSession in the client should
-        // contact the server to sync the session state. Value in seconds.
-        // e.g.
-        // * 0  - Disabled (always use cache value)
-        // * 60 - Sync session state with server if it's older than 60 seconds
         clientMaxAge: 0,
-        // Keep Alive tells windows / tabs that are signed in to keep sending
-        // a keep alive request (which extends the current session expiry) to
-        // prevent sessions in open windows from expiring. Value in seconds.
-        //
-        // Note: If a session has expired when keep alive is triggered, all open
-        // windows / tabs will be updated to reflect the user is signed out.
         keepAlive: 0,
       }}
       session={pageProps.session}

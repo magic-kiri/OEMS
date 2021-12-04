@@ -14,7 +14,6 @@ import {
   getAllCourseQuery,
   getInsertExamQuery,
 } from "../../lib/graphqlQuery/graphqlQuery";
-import Loading from "../../src/ui-custom-components/Loading";
 import { CourseType, ExamType, InsertExamType } from "../../lib/types/types";
 import { mutation } from "../../lib/databaseQuery/query";
 import { UserContext } from "../_app";
@@ -37,9 +36,9 @@ export default function CreateExamModal({
   setOpen: (value: boolean) => void;
 }) {
   const { userInfo } = useContext(UserContext);
-  //@ts-ignore
   const [examInfo, setExamInfo] = useState<InsertExamType>({
     ...nullExam,
+    //@ts-ignore
     creatorEmail: userInfo?.email,
   });
 
@@ -132,7 +131,7 @@ export default function CreateExamModal({
     setExamInfo((prev) => ({ ...prev, start_date: date }));
   };
 
-  const timeRangeChange = (date: any, dateString: string) => {
+  const timeRangeChange = (date: any[], dateString: string) => {
     setExamInfo((prev) => ({
       ...prev,
       start_time: date[0],
@@ -195,6 +194,7 @@ export default function CreateExamModal({
           size="large"
           use12Hours
           className={CreateExamModalStyle.inputStyle}
+          // @ts-ignore
           onChange={timeRangeChange}
         />
       </Modal>

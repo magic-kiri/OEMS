@@ -4,8 +4,9 @@ import Image from "next/image";
 import CreateExamModal from "./CreateExamModal";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import PermissionModal from "./PermissionModal";
-import Dropdown from "../../src/Dropdown";
+import Dropdown, { ItemType } from "../../src/ui-custom-components/Dropdown";
 import navstyle from "./navbar.module.css";
+import { logOut } from "../utils/authentication";
 
 const NavbarRightComponenet = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -23,15 +24,16 @@ const NavbarRightComponenet = () => {
   const myLoader = () => {
     return session?.image;
   };
-  const dropDownItems = [
+  const dropDownItems: ItemType[] = [
     {
       key: "permission",
-      onclick: handleClickPermission,
+      onClick: handleClickPermission,
       children: "Permission",
     },
     {
       key: "logout",
-      onclick: (() => alert("log out!")),
+      //@ts-ignore
+      onClick: logOut,
       children: "Logout",
     },
   ];
