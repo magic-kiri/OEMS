@@ -83,10 +83,6 @@ export default function CreateExamModal({
   const handleClickClose = () => {
     setOpen(false);
   };
-  //@ts-ignore
-  function handleChangeSelect(value) {
-    console.log(`selected ${value}`);
-  }
 
   const courseCodeOptions = courses.map((course) => (
     <Option key={course.course_code} value={course.course_code}>
@@ -128,7 +124,7 @@ export default function CreateExamModal({
   };
 
   const startDateChange = (date: any, dateString: string) => {
-    setExamInfo((prev) => ({ ...prev, start_date: date.format('ll') }));
+    setExamInfo((prev) => ({ ...prev, start_date: date.format("ll") }));
   };
 
   const timeRangeChange = (date: any[], dateString: string) => {
