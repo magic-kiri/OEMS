@@ -128,14 +128,14 @@ export default function CreateExamModal({
   };
 
   const startDateChange = (date: any, dateString: string) => {
-    setExamInfo((prev) => ({ ...prev, start_date: date }));
+    setExamInfo((prev) => ({ ...prev, start_date: date.format('ll') }));
   };
 
   const timeRangeChange = (date: any[], dateString: string) => {
     setExamInfo((prev) => ({
       ...prev,
-      start_time: date[0],
-      end_time: date[1],
+      start_time: date[0].format(),
+      end_time: date[1].format(),
     }));
   };
   return (
@@ -193,6 +193,7 @@ export default function CreateExamModal({
         <RangePicker
           size="large"
           use12Hours
+          format="h:mm a"
           className={CreateExamModalStyle.inputStyle}
           // @ts-ignore
           onChange={timeRangeChange}

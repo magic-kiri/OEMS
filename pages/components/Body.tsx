@@ -10,6 +10,7 @@ import RunningExamCard from "./RunningExamCard";
 import ExamCard from "./ExamCard";
 import Loading from "../../src/ui-custom-components/Loading";
 import { ExamType } from "../../lib/types/types";
+import moment from "moment";
 
 const Body = () => {
   const { userInfo } = useContext(UserContext);
@@ -28,7 +29,7 @@ const Body = () => {
   }
   if (data) {
     const exams: ExamType[] = data.exams;
-
+    
     return (
       <div className={bodystyle.bodyrest}>
         <RunningExamCard
@@ -36,14 +37,29 @@ const Body = () => {
           courseCode="CSE 334"
           time="01:29:45"
         />
-        {exams.map((exam) => (
-          <ExamCard
-            key={exam.id}
-            title={exam.exam_title}
-            courseCode={exam.course.course_code}
-            time="2:30PM, 29 October 2019"
-          />
-        ))}
+        {exams.map((exam) => {
+          
+          const startDate = new Date(exam.start_date);
+          const startTime = new Date(exam.start_time);
+          startTime.setDate(startDate.getDate());
+          startTime.setMonth(startDate.getMonth());
+          startTime.setFullYear(startDate.getFullYear());
+          
+          const endTime = new Date(exam.end_time);
+          endTime.setDate(startDate.getDate());
+          endTime.setMonth(startDate.getMonth());
+          endTime.setFullYear(startDate.getFullYear());
+          const time = moment(startTime).format('LT');
+          const date = moment(startDate).format('ll');
+          return (
+            <ExamCard
+              key={exam.id}
+              title={exam.exam_title}
+              courseCode={exam.course.course_code}
+              time={`${time}, ${date}`}
+            />
+          );
+        })}
       </div>
     );
   }

@@ -7,8 +7,8 @@ export type ExamType = {
   id: string;
   exam_title: string;
   start_date: string;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   course: CourseType;
   user: {
     name: string;
