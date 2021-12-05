@@ -30,14 +30,18 @@ const Body = ({ examCatagory }: { examCatagory: string }) => {
   if (data) {
     const exams: ExamTypeDate[] = data.exams.map(convertExamDates);
     const { upcomming, running, finished } = parseExams(exams);
+
     if (examCatagory === "active") {
       return (
         <div className={bodystyle.bodyrest}>
-          <RunningExamCard
-            title="Database Management System and Software Engineering"
-            courseCode="CSE 334"
-            time="01:29:45"
-          />
+          {running.map((exam) => (
+            <RunningExamCard
+              key={exam.id}
+              title={exam.course.course_title}
+              courseCode={exam.course.course_code}
+              time={exam.end_time}
+            />
+          ))}
           {upcomming.map((exam) => {
             const time = moment(exam.start_time).format("LT");
             const date = moment(exam.start_date).format("ll");
