@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cardstyle from "./runningExamCard.module.css";
 import Button from "../../src/ui-custom-components/Button";
 import Text from "../../src/ui-custom-components/Text";
 
 type RunningExamCardProps = {
   title: string;
-  time: string; // Time
+  time: Date; // Time
   courseCode: string;
   onClick?: () => void;
 };
@@ -16,6 +16,25 @@ const ExamCard = ({
   courseCode,
   onClick,
 }: RunningExamCardProps) => {
+  const [remaingTime, setRemainingTime] = useState<number>(
+    Math.floor((time.getTime() - new Date().getTime()) / 1000)
+  );
+
+  useEffect(() => {
+    const timer = setInterval(() => setRemainingTime((time) => time - 1), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const hour = Math.floor(remaingTime / 3600)
+    .toString()
+    .padStart(2, "0");
+  const minute = Math.floor((remaingTime / 60) % 60)
+    .toString()
+    .padStart(2, "0");
+  const second = Math.floor(remaingTime % 60)
+    .toString()
+    .padStart(2, "0");
+
   return (
     <div className={cardstyle.cardRunning}>
       <div
@@ -46,7 +65,7 @@ const ExamCard = ({
         }}
       >
         <Text style={{ fontSize: "16px", color: "white", padding: "10px" }}>
-          {time}
+          {`${hour}:${minute}:${second}`}
         </Text>
         <Button style={{ marginBottom: "15px" }} theme="transparentOutlined">
           Participate Now

@@ -9,11 +9,12 @@ import { getAllExamsQuery } from "../../lib/graphqlQuery/graphqlQuery";
 import RunningExamCard from "./RunningExamCard";
 import ExamCard from "./ExamCard";
 import Loading from "../../src/ui-custom-components/Loading";
-import { ExamType } from "../../lib/types/types";
+import { ExamTypeDate } from "../../lib/types/types";
+import moment from "moment";
+import { convertExamDates, parseExams } from "../utils/quickFunctions";
 
-const Body = () => {
+const Body = ({ examCatagory }: { examCatagory: string }) => {
   const { userInfo } = useContext(UserContext);
-
   const { data, loading, error } = useQuery(getAllExamsQuery());
 
   if (loading) {
@@ -27,25 +28,52 @@ const Body = () => {
     return <h1>Error in this section! {error.message}</h1>;
   }
   if (data) {
-    const exams: ExamType[] = data.exams;
+    const exams: ExamTypeDate[] = data.exams.map(convertExamDates);
+    const { upcomming, running, finished } = parseExams(exams);
 
-    return (
-      <div className={bodystyle.bodyrest}>
-        <RunningExamCard
-          title="Database Management System and Software Engineering"
-          courseCode="CSE 334"
-          time="01:29:45"
-        />
-        {exams.map((exam) => (
-          <ExamCard
-            key={exam.id}
-            title={exam.exam_title}
-            courseCode={exam.course.course_code}
-            time="2:30PM, 29 October 2019"
-          />
-        ))}
-      </div>
-    );
+    if (examCatagory === "active") {
+      return (
+        <div className={bodystyle.bodyrest}>
+          {running.map((exam) => (
+            <RunningExamCard
+              key={exam.id}
+              title={exam.course.course_title}
+              courseCode={exam.course.course_code}
+              time={exam.end_time}
+            />
+          ))}
+          {upcomming.map((exam) => {
+            const time = moment(exam.start_time).format("LT");
+            const date = moment(exam.start_date).format("ll");
+            return (
+              <ExamCard
+                key={exam.id}
+                title={exam.exam_title}
+                courseCode={exam.course.course_code}
+                time={`${time}, ${date}`}
+              />
+            );
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div className={bodystyle.bodyrest}>
+          {finished.map((exam) => {
+            const time = moment(exam.start_time).format("LT");
+            const date = moment(exam.start_date).format("ll");
+            return (
+              <ExamCard
+                key={exam.id}
+                title={exam.exam_title}
+                courseCode={exam.course.course_code}
+                time={`${time}, ${date}`}
+              />
+            );
+          })}
+        </div>
+      );
+    }
   }
 };
 

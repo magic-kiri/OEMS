@@ -2,13 +2,25 @@ export type CourseType = {
   course_code: string;
   course_title: string;
 };
+export type ExamTypeDate = {
+  id: string;
+  exam_title: string;
+  start_date: Date;
+  start_time: Date;
+  end_time: Date;
+  course: CourseType;
+  user: {
+    name: string;
+    email: string;
+  };
+};
 
 export type ExamType = {
   id: string;
   exam_title: string;
   start_date: string;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   course: CourseType;
   user: {
     name: string;
