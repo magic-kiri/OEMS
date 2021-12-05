@@ -5,7 +5,7 @@ import ExamBody from "./exam-components/ExamBody";
 const Id = () => {
   return (
     <div>
-      <Navbar />
+      <Navbar showTabs={false}/>
       <ExamBody />
     </div>
   );
