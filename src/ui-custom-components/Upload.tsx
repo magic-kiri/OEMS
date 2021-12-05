@@ -6,7 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { storageRef } from "../../public/firebase/initFirebase";
 const { Dragger } = Upload;
 
-const upload = () => {
+const upload = ({ setLink }: { setLink: (value: string) => void }) => {
   const props = {
     name: "file",
     multiple: false,
@@ -24,11 +24,11 @@ const upload = () => {
     beforeUpload(file: any, fileList: any) {
       const fileRef = ref(storageRef, file.name);
       uploadBytes(fileRef, file).then((snapshot) => {
-        getDownloadURL(fileRef).then((url) => console.log({ url }));
+        getDownloadURL(fileRef).then((url) => setLink(url));
         console.log({ snapshot });
       });
     },
-    onDrop(e:any) {
+    onDrop(e: any) {
       console.log("Dropped files", e.dataTransfer.files);
     },
   };
