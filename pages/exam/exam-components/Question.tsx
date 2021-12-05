@@ -1,7 +1,8 @@
 import React from "react";
+import Upload from "../../../src/ui-custom-components/Upload";
 
 const Question = () => {
-  return <p>Yet to work</p>;
+  return <Upload/>;
 };
 
 export default Question;
