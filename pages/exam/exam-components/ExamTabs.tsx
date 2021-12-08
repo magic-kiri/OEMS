@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Tabs } from "antd";
 import TabsStyle from "./examTabs.module.css";
-import Button from "../../../src/ui-custom-components/Button";
 import Discussion from "./Discussion";
 import Clarification from "./Clarification";
-import Question from "./Question";
+import QuestionTeacher from "./QuestionTeacher";
 import Participants from "./Participants";
+import QuestionStudent from "./QuestionStudent";
 
 const { TabPane } = Tabs;
 
 const ExamTabs = () => {
-  const [role, useRole] = useState("student");
+  const [role, useRole] = useState<string>("teacher");
   if (role === "teacher") {
     return (
       <div className={TabsStyle.tabs}>
         <Tabs centered size="large">
           <TabPane tab="Question" key="question">
-            <Question />
+            <QuestionTeacher />
           </TabPane>
           <TabPane tab="Discussion" key="discussion">
             <Discussion />
@@ -35,7 +35,7 @@ const ExamTabs = () => {
       <div className={TabsStyle.tabs}>
         <Tabs centered size="large">
           <TabPane tab="Question" key="question">
-            <Question />
+            <QuestionStudent />
           </TabPane>
           <TabPane tab="Discussion" key="discussion">
             <Discussion />

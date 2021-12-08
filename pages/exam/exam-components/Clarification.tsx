@@ -8,7 +8,7 @@ import Image from "next/image";
 import SingleClarification from "./SingleClarification";
 
 const Clarification = () => {
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState<string>("student");
   const myLoader = () => {
     return imageLink;
   };
