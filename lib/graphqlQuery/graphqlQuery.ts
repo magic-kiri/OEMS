@@ -1,7 +1,30 @@
 import { DocumentNode, gql } from "@apollo/client";
 import { ExamType, InsertExamType } from "../types/types";
 
-export const getAllExamsQuery: () => DocumentNode = () => gql`
+export const getAllExamsQuery: () => DocumentNode = () =>
+  gql(getAllExamsQueryString());
+
+export const getAllCourseQuery: () => DocumentNode = () =>
+  gql(getAllCourseQueryString());
+
+export const getSignInInformationQuery: (email: string) => DocumentNode = (
+  email
+) => gql(getSignInInformationQueryString(email));
+
+export const getUpsertQueryWithEmail: (
+  email: string,
+  name: string,
+  imageUrl: string
+) => DocumentNode = (name, email, imageUrl) => gql(getUpsertQueryWithEmailString(name,email,imageUrl));
+
+export const getInsertExamQuery: (examInfo: InsertExamType) => DocumentNode = (
+  examInfo
+) => {
+  return gql(getInsertExamQueryString(examInfo));
+};
+
+export const getAllExamsQueryString: () => string = () => {
+  return `
   query MyQuery {
     exams {
       id
@@ -20,8 +43,9 @@ export const getAllExamsQuery: () => DocumentNode = () => gql`
     }
   }
 `;
+};
 
-export const getAllCourseQuery: () => DocumentNode = () => gql`
+export const getAllCourseQueryString: () => string = () => `
   query MyQuery {
     courses {
       course_code
@@ -30,9 +54,9 @@ export const getAllCourseQuery: () => DocumentNode = () => gql`
   }
 `;
 
-export const getSignInInformationQuery: (email: string) => DocumentNode = (
+export const getSignInInformationQueryString: (email: string) => string = (
   email
-) => gql`
+) => `
     query MyQuery {
         users(where: {email: {_eq: "${email}"}}) {
         adminRole
@@ -41,11 +65,11 @@ export const getSignInInformationQuery: (email: string) => DocumentNode = (
     }
 `;
 
-export const getUpsertQueryWithEmail: (
+export const getUpsertQueryWithEmailString: (
   email: string,
   name: string,
   imageUrl: string
-) => DocumentNode = (name, email, imageUrl) => gql`
+) => string = (name, email, imageUrl) => `
   mutation random {
     insert_users_one(
       object: {
@@ -66,10 +90,10 @@ export const getUpsertQueryWithEmail: (
   }
 `;
 
-export const getInsertExamQuery: (examInfo: InsertExamType) => DocumentNode = (
+export const getInsertExamQueryString: (examInfo: InsertExamType) => string = (
   examInfo
 ) => {
-  return gql`
+  return `
     mutation MyMutation {
         insert_exams_one(
           object: {
