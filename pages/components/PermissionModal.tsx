@@ -16,11 +16,6 @@ export default function PermissionModal({ setOpen, open }) {
     setOpen(false);
   };
 
-  //@ts-ignore
-  function handleChangeSelect(value) {
-    console.log(`selected ${value}`);
-  }
-
   return (
     <Modal
       visible={open}

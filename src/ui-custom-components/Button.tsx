@@ -16,6 +16,8 @@ const getButtonClassName = (theme: string) => {
       return "button-transparent-outlined";
     case "transparent":
       return "button-transparent";
+    case "upload":
+      return "button-upload";
     default:
       return "button-dark";
   }
