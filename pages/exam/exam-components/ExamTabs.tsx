@@ -6,12 +6,15 @@ import Clarification from "./Clarification";
 import QuestionTeacher from "./QuestionTeacher";
 import Participants from "./Participants";
 import QuestionStudent from "./QuestionStudent";
+import { ExamTypeDate } from "../../../lib/types/types";
 
 const { TabPane } = Tabs;
 
-const ExamTabs = () => {
-  const [role, useRole] = useState<string>("teacher");
-  if (role === "teacher") {
+const ExamTabs = (exam: ExamTypeDate) => {
+  
+  const adminRole = true;
+  
+  if (adminRole) {
     return (
       <div className={TabsStyle.tabs}>
         <Tabs centered size="large">

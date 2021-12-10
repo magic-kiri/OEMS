@@ -17,9 +17,6 @@ const QuestionTeacher = () => {
   if (status === "upcoming") {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
-          Exam Code: 22
-        </Text>
         {link && (
           <Link style={{ fontSize: "18px" }} href={link} target="_blank">
             Question link.
@@ -34,9 +31,6 @@ const QuestionTeacher = () => {
   } else if (status === "running") {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
-          Exam Code: 22
-        </Text>
         {link && (
           <Link style={{ fontSize: "18px" }} href={link} target="_blank">
             Question link.
@@ -47,9 +41,6 @@ const QuestionTeacher = () => {
   } else {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
-          Exam Code: 22
-        </Text>
         {link && (
           <Link style={{ fontSize: "18px" }} href={link} target="_blank">
             Question link.

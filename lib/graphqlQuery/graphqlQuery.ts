@@ -15,13 +15,17 @@ export const getUpsertQueryWithEmail: (
   email: string,
   name: string,
   imageUrl: string
-) => DocumentNode = (name, email, imageUrl) => gql(getUpsertQueryWithEmailString(name,email,imageUrl));
+) => DocumentNode = (name, email, imageUrl) =>
+  gql(getUpsertQueryWithEmailString(name, email, imageUrl));
 
 export const getInsertExamQuery: (examInfo: InsertExamType) => DocumentNode = (
   examInfo
 ) => {
   return gql(getInsertExamQueryString(examInfo));
 };
+
+export const getExamByIdQuery: (id: string) => DocumentNode = (id) =>
+  gql(getExamByIdQueryString(id));
 
 export const getAllExamsQueryString: () => string = () => {
   return `
@@ -110,3 +114,22 @@ export const getInsertExamQueryString: (examInfo: InsertExamType) => string = (
       }
     `;
 };
+
+export const getExamByIdQueryString: (id: string) => string = (id) => `
+  query MyQuery {
+    exams(where: {id: {_eq: ${id}}}) {
+      id
+      exam_title
+      start_date
+      start_time
+      end_time
+      course {
+        course_title
+        course_code
+      }
+      user {
+        name
+        email
+      }
+    }
+  }`;

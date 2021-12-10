@@ -11,7 +11,6 @@ const QuestionStudent = () => {
   if (status === "upcoming") {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px" }}>Exam Code: 22</Text>
         <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
           Stay tuned. The exam will be held soon.
         </Text>
@@ -20,9 +19,6 @@ const QuestionStudent = () => {
   } else if (status === "running") {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
-          Exam Code: 22
-        </Text>
         <UploadScript setLink={setLink} />
         <Button theme="dark" style={{ marginTop: "10px" }}>
           Upload Script
@@ -32,9 +28,8 @@ const QuestionStudent = () => {
   } else {
     return (
       <div className={QuestionStyle.question}>
-        <Text style={{ fontSize: "18px" }}>Exam Code: 22</Text>
         <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
-          Thank you for your participation.
+          Thanks for your participation.
         </Text>
         {link && (
           <Link style={{ fontSize: "18px" }} href={link} target="_blank">

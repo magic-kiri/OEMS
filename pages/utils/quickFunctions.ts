@@ -20,7 +20,7 @@ export const parseExams = (exams: ExamTypeDate[]) => {
   return { upcomming, running, finished };
 };
 
-export const convertExamDates = (exam: ExamType) => {
+export const convertExamDates: (exam: ExamType) => ExamTypeDate = (exam: ExamType) => {
   const startDate = new Date(exam.start_date);
   const startTime = new Date(exam.start_time);
   const endTime = new Date(exam.end_time);
@@ -33,5 +33,5 @@ export const convertExamDates = (exam: ExamType) => {
   endTime.setMonth(startDate.getMonth());
   endTime.setFullYear(startDate.getFullYear());
 
-  return { ...exam, start_time: startTime, end_time: endTime };
+  return { ...exam, start_date: startDate, start_time: startTime, end_time: endTime };
 };
