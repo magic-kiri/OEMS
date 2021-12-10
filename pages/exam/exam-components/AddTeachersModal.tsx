@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Button from "../../../src/ui-custom-components/Button";
 import Text from "../../../src/ui-custom-components/Text";
 import Modal from "../../../src/ui-custom-components/Modal";
-import Upload from "../../../src/ui-custom-components/Upload";
+import Select from "../../../src/ui-custom-components/Select";
+import Option from "../../../src/ui-custom-components/Option";
 
 //@ts-ignore
-export default function AddStudentModal({ setOpen, open }) {
-  const [link, setLink] = useState<string>();
-
+export default function AddTeachersModal({ setOpen, open }) {
   const handleSubmit = () => {
     setOpen(false);
     alert("Done");
@@ -17,10 +16,23 @@ export default function AddStudentModal({ setOpen, open }) {
     setOpen(false);
   };
 
+  function handleChange(value: any) {
+    console.log(`selected ${value}`);
+  }
+
+  const children = [];
+  for (let i = 10; i < 36; i++) {
+    children.push(
+      <Option key={i.toString(36) + i} value={i.toString(36) + i}>
+        {i.toString(36) + i}
+      </Option>
+    );
+  }
+
   return (
     <Modal
       visible={open}
-      title="Add Students"
+      title="Add Teachers"
       onCancel={handleClickClose}
       footer={[
         <Button key="cancelButton" theme="dark" onClick={handleClickClose}>
@@ -38,11 +50,19 @@ export default function AddStudentModal({ setOpen, open }) {
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Text style={{ fontSize: "16px", marginBottom: "10px" }}>
-          Upload a CSV file to add students.
+          Select a single or multiple teachers to add to this exam.
         </Text>
-        <Upload setLink={setLink} />
-        <Button theme="upload" style={{ marginTop: "20px" }}>
-          Upload
+        <Select
+          mode="multiple"
+          allowClear
+          style={{ width: "100%" }}
+          placeholder="Select Teachers"
+          onChange={handleChange}
+        >
+          {children}
+        </Select>
+        <Button theme="light" style={{ marginTop: "20px" }}>
+          Add
         </Button>
       </div>
     </Modal>

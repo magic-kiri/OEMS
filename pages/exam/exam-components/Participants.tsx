@@ -5,11 +5,16 @@ import { Divider } from "antd";
 import SingleParticipant from "./SingleParticipant";
 import Button from "../../../src/ui-custom-components/Button";
 import AddStudentsModal from "./AddStudentsModal";
+import AddTeachersModal from "./AddTeachersModal";
 
 const Participants = () => {
   const [openStudents, setOpenStudents] = useState<boolean>(false);
+  const [openTeachers, setOpenTeachers] = useState<boolean>(false);
   const handleClickStudents = () => {
     setOpenStudents((value) => !value);
+  };
+  const handleClickTeachers = () => {
+    setOpenTeachers((value) => !value);
   };
 
   return (
@@ -17,7 +22,10 @@ const Participants = () => {
       <div style={{ alignItems: "left" }}>
         <div className={ParticipantsStyle.semiHeader}>
           <Text style={{ fontSize: "18px" }}>Teachers</Text>
-          <Button theme="dark">Add Teachers</Button>
+          <Button theme="dark" onClick={handleClickTeachers}>
+            Add Teachers
+          </Button>
+          <AddTeachersModal open={openTeachers} setOpen={setOpenTeachers} />
         </div>
         <Divider style={{ margin: "15px 0px" }} />
         <SingleParticipant />
