@@ -6,6 +6,7 @@ import Clarification from "./Clarification";
 import QuestionTeacher from "./QuestionTeacher";
 import Participants from "./Participants";
 import QuestionStudent from "./QuestionStudent";
+import Requests from "./Requests";
 import { ExamTypeDate } from "../../../lib/types/types";
 import { useSession } from "next-auth/client";
 import Loading from "../../../src/ui-custom-components/Loading";
@@ -55,6 +56,9 @@ const ExamTabs = ({ exam, status }: ExamTabsProps) => {
           </TabPane>
           <TabPane tab="Participants" key="participants">
             <Participants />
+          </TabPane>
+          <TabPane tab="Requests" key="requests">
+            <Requests />
           </TabPane>
         </Tabs>
       </div>

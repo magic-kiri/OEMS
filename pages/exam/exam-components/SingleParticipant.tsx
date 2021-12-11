@@ -2,7 +2,7 @@ import React from "react";
 import Text from "../../../src/ui-custom-components/Text";
 import { imageLink } from "../../data";
 import Image from "next/image";
-import SingleParticipantStyle from "./singleParticipant.module.css";
+import SingleParticipantStyle from "./participants.module.css";
 
 const SingleClarification = () => {
   const myLoader = () => {

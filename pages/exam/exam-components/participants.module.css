@@ -7,10 +7,18 @@
 .singleParticipant {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .semiHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.myImage {
+  margin: 5px 15px 0px 0px;
+}
+.myImage img {
+  border-radius: 50px;
 }

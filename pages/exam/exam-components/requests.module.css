@@ -1,4 +1,10 @@
-.singleComment {
+.requests {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px 20px 20px;
+}
+
+.singleRequest {
   display: flex;
   flex-direction: row;
 }
