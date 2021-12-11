@@ -9,6 +9,7 @@ const Id = () => {
   return (
     <div>
       <Navbar showTabs={false}/>
+      {/* @ts-ignore */}
       <ExamBody id={id as string}/>
     </div>
   );

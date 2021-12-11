@@ -24,31 +24,35 @@ const ExamBody = ({ id }: { id: string }) => {
       </div>
     );
   }
-  if(data){
+  if (data) {
     const exams: ExamTypeDate[] = data.exams.map(convertExamDates);
-    if(!exams.length){
-      return <h1>Wrong URL</h1>
+    if (!exams.length) {
+      return <h1>Wrong URL</h1>;
     }
 
     const exam = exams[0];
-
+    let status = "Running Exam";
+    if (new Date() < exam.start_time) {
+      status = "Upcoming Exam";
+    } else if (exam.end_time < new Date()) {
+      status = "Finished Exam";
+    }
     return (
       <div className={ExamBodyStyle.examBody}>
         <ExamHeaderCard
-          status="Running Exam"
+          status={status}
           title="Database Management System and Software Engineering"
           courseCode="CSE 334"
-          time= {exam.end_time}
+          time={exam.end_time}
           id={id}
         />
-        <ExamTabs exam={exam}/>
+        <ExamTabs exam={exam} status={status} />
       </div>
     );
   }
-  if(error){
-    return <h1>Something went wrong!</h1>
+  if (error) {
+    return <h1>Something went wrong!</h1>;
   }
-
 };
 
 export default ExamBody;

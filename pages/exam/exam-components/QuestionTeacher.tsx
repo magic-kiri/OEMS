@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import Upload from "../../../src/ui-custom-components/Upload";
-import Text from "../../../src/ui-custom-components/Text";
 import Link from "../../../src/ui-custom-components/Link";
 import Button from "../../../src/ui-custom-components/Button";
 import QuestionStyle from "./question.module.css";
 import DownloadScriptModal from "./DownloadScriptModal";
 
-const QuestionTeacher = () => {
-  const [status, setStatus] = useState<string>("finished");
+type QuestionTeacherProps = {
+  status: string;
+};
+
+const QuestionTeacher = ({ status }: QuestionTeacherProps) => {
+  // const [status, setStatus] = useState<string>("finished");
   const [link, setLink] = useState<string>();
   const [openDownloadScript, setOpenDownloadScript] = useState<boolean>(false);
   const handleChange = () => {
     setOpenDownloadScript((value) => !value);
   };
 
-  if (status === "upcoming") {
+  if (status === "Upcoming Exam") {
     return (
       <div className={QuestionStyle.question}>
         {link && (
@@ -28,7 +31,7 @@ const QuestionTeacher = () => {
         </Button>
       </div>
     );
-  } else if (status === "running") {
+  } else if (status === "Running Exam") {
     return (
       <div className={QuestionStyle.question}>
         {link && (

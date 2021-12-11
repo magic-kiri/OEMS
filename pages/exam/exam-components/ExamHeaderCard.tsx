@@ -26,13 +26,15 @@ const ExamHeaderCard = ({
   useEffect(() => {
     let timer: any = null;
     if (remaingTime > 0) {
-      timer = setInterval(() => setRemainingTime((time) => time - 1), 1000);
-    }
-    else {
+      timer = setInterval(
+        () => setRemainingTime((time) => Math.max(0, time - 1)),
+        1000
+      );
+    } else {
       setRemainingTime(0);
     }
     return () => {
-      if(timer){
+      if (timer) {
         clearInterval(timer);
       }
     };
@@ -47,6 +49,7 @@ const ExamHeaderCard = ({
   const second = Math.floor(remaingTime % 60)
     .toString()
     .padStart(2, "0");
+  const countdown = `${hour}:${minute}:${second}`;
 
   return (
     <div className={cardstyle.examHeaderCard}>
@@ -56,9 +59,11 @@ const ExamHeaderCard = ({
       <Text style={{ margin: "-5px", fontSize: "24px", color: "white" }}>
         <strong> {title} </strong>
       </Text>
-      <Text style={{ marginBottom: "0px", fontSize: "16px", color: "white" }}>
-        {`${hour}:${minute}:${second}`}
-      </Text>
+      {status !== "Upcoming Exam" && (
+        <Text style={{ marginBottom: "0px", fontSize: "16px", color: "white" }}>
+          {countdown}
+        </Text>
+      )}
       <Text style={{ fontSize: "16px", marginBottom: "10px", color: "white" }}>
         Exam Code: {id}
       </Text>

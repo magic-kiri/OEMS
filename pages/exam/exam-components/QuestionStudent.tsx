@@ -5,10 +5,12 @@ import Button from "../../../src/ui-custom-components/Button";
 import QuestionStyle from "./question.module.css";
 import UploadScript from "../../../src/ui-custom-components/UploadScript";
 
-const QuestionStudent = () => {
-  const [status, setStatus] = useState<string>("finished");
+type QuestionStudentProps = {
+  status: string;
+};
+const QuestionStudent = ({ status }: QuestionStudentProps) => {
   const [link, setLink] = useState<string>();
-  if (status === "upcoming") {
+  if (status === "Upcoming Exam") {
     return (
       <div className={QuestionStyle.question}>
         <Text style={{ fontSize: "18px", marginBottom: "10px" }}>
@@ -16,7 +18,7 @@ const QuestionStudent = () => {
         </Text>
       </div>
     );
-  } else if (status === "running") {
+  } else if (status === "Running Exam") {
     return (
       <div className={QuestionStyle.question}>
         <UploadScript setLink={setLink} />
