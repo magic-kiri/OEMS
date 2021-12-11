@@ -2,23 +2,28 @@ import React, { useEffect, useState } from "react";
 import cardstyle from "./runningExamCard.module.css";
 import Button from "../../src/ui-custom-components/Button";
 import Text from "../../src/ui-custom-components/Text";
+import { useRouter } from "next/router";
 
 type RunningExamCardProps = {
+  id: string;
   title: string;
   time: Date; // Time
   courseCode: string;
-  onClick?: () => void;
 };
 
 const ExamCard = ({
+  id,
   title,
   time,
   courseCode,
-  onClick,
 }: RunningExamCardProps) => {
   const [remaingTime, setRemainingTime] = useState<number>(
     Math.floor((time.getTime() - new Date().getTime()) / 1000)
   );
+  const router = useRouter()
+  const handleClick = () => {
+    router.push(`/exam/${id}`);
+  }
 
   useEffect(() => {
     const timer = setInterval(() => setRemainingTime((time) => time - 1), 1000);
@@ -67,7 +72,7 @@ const ExamCard = ({
         <Text style={{ fontSize: "16px", color: "white", padding: "10px" }}>
           {`${hour}:${minute}:${second}`}
         </Text>
-        <Button style={{ marginBottom: "15px" }} theme="transparentOutlined">
+        <Button style={{ marginBottom: "15px" }} theme="transparentOutlined" onClick={handleClick}>
           Participate Now
         </Button>
       </div>

@@ -48,6 +48,7 @@ const Body = ({ examCatagory }: { examCatagory: string }) => {
         {runningExam.map((exam) => (
           <RunningExamCard
             key={exam.id}
+            id={exam.id}
             title={exam.course.course_title}
             courseCode={exam.course.course_code}
             time={exam.end_time}
@@ -59,6 +60,7 @@ const Body = ({ examCatagory }: { examCatagory: string }) => {
           return (
             <ExamCard
               key={exam.id}
+              id={exam.id}
               title={exam.exam_title}
               courseCode={exam.course.course_code}
               time={`${time}, ${date}`}
@@ -76,6 +78,7 @@ const Body = ({ examCatagory }: { examCatagory: string }) => {
           return (
             <ExamCard
               key={exam.id}
+              id={exam.id}
               title={exam.exam_title}
               courseCode={exam.course.course_code}
               time={`${time}, ${date}`}
