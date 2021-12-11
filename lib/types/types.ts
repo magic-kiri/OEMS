@@ -63,7 +63,7 @@ export type DiscussionType = {
   comment: string;
   email: string;
   exam_id: string;
-  id: string;
+  id?: string;
   user: {
     name: string;
     imageUrl: string;

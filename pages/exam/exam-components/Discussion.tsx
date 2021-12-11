@@ -41,15 +41,30 @@ const Discussion = ({ id }: DiscussionProps) => {
   const myLoader = () => {
     return session?.user?.image as string;
   };
-  console.log(discussions.length);
+
+  const addNewComment = (comment: string) => {
+    if (session?.user) {
+      const newComment: DiscussionType = {
+        comment,
+        exam_id: id,
+        email: session?.user?.email as string,
+        user: {
+          name: session?.user?.name as string,
+          imageUrl: session?.user?.image as string,
+        },
+      };
+      setDiscussions((prev) => [...prev, newComment]);
+    }
+  };
+
   return (
     <div className={DiscussionStyle.discussion}>
       <div style={{ alignItems: "left" }}>
         <Text>{discussions.length} Comments</Text>
         <Divider style={{ margin: "15px 0px" }} />
-        {
-          discussions.map((discussion, index) => <SingleComment key={index} discussion={discussion} />)
-        }
+        {discussions.map((discussion, index) => (
+          <SingleComment key={index} discussion={discussion} />
+        ))}
       </div>
       <Divider />
       {session?.user && (
@@ -63,7 +78,7 @@ const Discussion = ({ id }: DiscussionProps) => {
               width="35vw"
             />
           </div>
-          <InputCommentBox />
+          <InputCommentBox id={id} addNewComment={addNewComment} />
         </div>
       )}
     </div>

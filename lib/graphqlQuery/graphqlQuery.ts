@@ -153,3 +153,11 @@ export const getDiscussionByIdQueryString: (id: string) => string = (id) => `
     }
   }
 `;
+
+export const getUpsertCommentQueryString: (exam_id: string, email:string, comment: string) => string = (exam_id, email, comment) => `
+  mutation MyMutation {
+    insert_discussions_one(object: {exam_id: ${exam_id}, email: "${email}", comment: "${comment}"}) {
+      id
+    }
+  }
+`
