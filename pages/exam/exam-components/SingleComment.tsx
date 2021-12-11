@@ -3,10 +3,12 @@ import Text from "../../../src/ui-custom-components/Text";
 import { imageLink } from "../../data";
 import Image from "next/image";
 import SingleCommentStyle from "./singleComment.module.css";
+import { DiscussionType } from "../../../lib/types/types";
 
-const SingleComment = () => {
+const SingleComment = ({ discussion }: { discussion: DiscussionType }) => {
+  
   const myLoader = () => {
-    return imageLink;
+    return discussion.user.imageUrl;
   };
   return (
     <div className={SingleCommentStyle.singleComment}>
@@ -21,10 +23,10 @@ const SingleComment = () => {
       </div>
       <div>
         <Text>
-          <strong> Quamrul Islam </strong>
+          <strong> {discussion?.user?.name} </strong>
         </Text>
         <br />
-        <Text>We can see this exam from a Nationalist point of view.</Text>
+        <Text>{discussion.comment}</Text>
         <br />
       </div>
     </div>

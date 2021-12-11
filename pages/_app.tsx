@@ -61,3 +61,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp;
 
 export const dashboardRefreshTime = 5000;
+export const discussionRefreshTime = 5000;
