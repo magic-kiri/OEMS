@@ -7,6 +7,7 @@ import PermissionModal from "./PermissionModal";
 import Dropdown, { ItemType } from "../../src/ui-custom-components/Dropdown";
 import navstyle from "./navbar.module.css";
 import { logOut } from "../utils/authentication";
+import { useRouter } from "next/router";
 
 const NavbarRightComponenet = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -22,10 +23,20 @@ const NavbarRightComponenet = () => {
     setOpenPermission((value) => !value);
   };
 
+  const router = useRouter();
+  const handleClickProfile = () => {
+    router.push(`/Profile`);
+  };
+
   const myLoader = () => {
     return session?.image;
   };
   const dropDownItems: ItemType[] = [
+    {
+      key: "profile",
+      onClick: handleClickProfile,
+      children: "Profile",
+    },
     {
       key: "permission",
       onClick: handleClickPermission,
@@ -61,7 +72,12 @@ const NavbarRightComponenet = () => {
       <div ref={ref}>
         <PermissionModal open={openPermission} setOpen={setOpenPermission} />
         {/* @ts-ignore */}
-        <Dropdown getPopupContainer={() => ref.current} overlay={<></>} items={dropDownItems} trigger={["click"] }>
+        <Dropdown
+          getPopupContainer={() => ref.current}
+          overlay={<></>}
+          items={dropDownItems}
+          trigger={["click"]}
+        >
           <a onClick={(e) => e.preventDefault()}>
             <div className={navstyle.myImage}>
               <Image
