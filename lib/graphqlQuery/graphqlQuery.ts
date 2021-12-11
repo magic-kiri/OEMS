@@ -27,6 +27,11 @@ export const getInsertExamQuery: (examInfo: InsertExamType) => DocumentNode = (
 export const getExamByIdQuery: (id: string) => DocumentNode = (id) =>
   gql(getExamByIdQueryString(id));
 
+export const getDiscussionByIdQuery: (id: string) => DocumentNode = (id) =>
+  gql(getDiscussionByIdQueryString(id));
+
+// String Query //
+
 export const getAllExamsQueryString: () => string = () => {
   return `
   query MyQuery {
@@ -133,3 +138,26 @@ export const getExamByIdQueryString: (id: string) => string = (id) => `
       }
     }
   }`;
+
+export const getDiscussionByIdQueryString: (id: string) => string = (id) => `
+  query MyQuery {
+    discussions(where: {exam_id: {_eq: ${id}}}) {
+      comment
+      email
+      exam_id
+      id
+      user {
+        imageUrl
+        name
+      }
+    }
+  }
+`;
+
+export const getUpsertCommentQueryString: (exam_id: string, email:string, comment: string) => string = (exam_id, email, comment) => `
+  mutation MyMutation {
+    insert_discussions_one(object: {exam_id: ${exam_id}, email: "${email}", comment: "${comment}"}) {
+      id
+    }
+  }
+`

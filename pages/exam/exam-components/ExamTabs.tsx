@@ -49,7 +49,7 @@ const ExamTabs = ({ exam, status }: ExamTabsProps) => {
             <QuestionTeacher status={status} />
           </TabPane>
           <TabPane tab="Discussion" key="discussion">
-            <Discussion />
+            <Discussion id={exam.id}/>
           </TabPane>
           <TabPane tab="Clarifications" key="clarifications">
             <Clarification />
@@ -71,7 +71,7 @@ const ExamTabs = ({ exam, status }: ExamTabsProps) => {
             <QuestionStudent status={status} />
           </TabPane>
           <TabPane tab="Discussion" key="discussion">
-            <Discussion />
+            <Discussion id={exam.id}/>
           </TabPane>
           <TabPane tab="Clarifications" key="clarifications">
             <Clarification />

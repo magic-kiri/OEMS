@@ -58,3 +58,14 @@ export type InsertExamType = {
   course_title: string;
   course_code: string;
 };
+
+export type DiscussionType = {
+  comment: string;
+  email: string;
+  exam_id: string;
+  id?: string;
+  user: {
+    name: string;
+    imageUrl: string;
+  }
+}
