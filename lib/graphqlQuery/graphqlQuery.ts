@@ -154,10 +154,72 @@ export const getDiscussionByIdQueryString: (id: string) => string = (id) => `
   }
 `;
 
-export const getUpsertCommentQueryString: (exam_id: string, email:string, comment: string) => string = (exam_id, email, comment) => `
+export const getUpsertCommentQueryString: (
+  exam_id: string,
+  email: string,
+  comment: string
+) => string = (exam_id, email, comment) => `
   mutation MyMutation {
     insert_discussions_one(object: {exam_id: ${exam_id}, email: "${email}", comment: "${comment}"}) {
       id
     }
   }
-`
+`;
+
+export const getUpsertAllowedTeacherQueryString: (
+  email: string,
+  exam_id: string
+) => string = (email, exam_id) => `
+mutation MyMutation {
+  insert_allowed_teacher_one(object: {email: "${email}", exam_id: ${exam_id}}) {
+    id
+  }
+}
+`;
+
+export const getUpsertAllowedTeacherQuery: (
+  email: string,
+  exam_id: string
+) => DocumentNode = (email, exam_id) =>
+  gql(getUpsertAllowedTeacherQueryString(email, exam_id));
+
+export const getAllowedTeacherQueryString: (id: string) => string = (id) => `
+  query MyQuery {
+    allowed_teacher(where: {exam_id: {_eq: ${id}}}) {
+      email
+    }
+  }
+`;
+
+export const getAllowedTeacherQuery: (id: string) => DocumentNode = (id) =>
+  gql(getAllowedTeacherQueryString(id));
+
+export const getClarificationWithIdQueryString: (id: string) => string = (id) => `
+  query MyQuery {
+    clarification(where: {exam_id: {_eq: ${45}}}) {
+      id
+      text
+      user {
+        name
+        imageUrl
+      }
+    }
+  }
+`;
+
+export const getClarificationWithIdQuery: (id: string) => DocumentNode = (id) =>
+{
+  return gql(getClarificationWithIdQueryString(id));
+}
+
+export const getUpsertClarificationQueryString: (
+  exam_id: string,
+  email: string,
+  comment: string
+) => string = (exam_id, email, comment) => `
+  mutation MyMutation {
+    insert_clarification_one(object: {exam_id: ${exam_id}, email: "${email}", text: "${comment}"}) {
+      id
+    }
+  }
+`;

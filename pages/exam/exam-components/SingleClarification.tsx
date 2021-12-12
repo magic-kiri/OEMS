@@ -3,10 +3,13 @@ import Text from "../../../src/ui-custom-components/Text";
 import { imageLink } from "../../data";
 import Image from "next/image";
 import SingleClarificationStyle from "./clarification.module.css";
+import { SingleClarificationType } from "./Clarification";
 
-const SingleClarification = () => {
+const SingleClarification = (props: SingleClarificationType) => {
+  const { text, user } = props;
+  const { name, imageUrl } = user;
   const myLoader = () => {
-    return imageLink;
+    return imageUrl;
   };
   return (
     <div className={SingleClarificationStyle.singleClarification}>
@@ -21,10 +24,10 @@ const SingleClarification = () => {
       </div>
       <div>
         <Text>
-          <strong> Arnab Sen Sharma </strong>
+          <strong> {name} </strong>
         </Text>
         <br />
-        <Text>See the zip file.</Text>
+        <Text>{text}</Text>
         <br />
       </div>
     </div>

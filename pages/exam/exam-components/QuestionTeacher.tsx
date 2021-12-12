@@ -16,7 +16,6 @@ const QuestionTeacher = ({ status }: QuestionTeacherProps) => {
   const handleChange = () => {
     setOpenDownloadScript((value) => !value);
   };
-
   if (status === "Upcoming Exam") {
     return (
       <div className={QuestionStyle.question}>

@@ -62,3 +62,4 @@ export default MyApp;
 
 export const dashboardRefreshTime = 5000;
 export const discussionRefreshTime = 5000;
+export const clarificationRefreshTime = 5000;

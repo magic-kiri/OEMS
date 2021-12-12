@@ -13,6 +13,7 @@ import { useQuery } from "@apollo/client";
 import {
   getAllCourseQuery,
   getInsertExamQuery,
+  getUpsertAllowedTeacherQuery,
 } from "../../lib/graphqlQuery/graphqlQuery";
 import { CourseType, ExamType, InsertExamType } from "../../lib/types/types";
 import { mutation } from "../../lib/databaseQuery/query";
@@ -69,10 +70,18 @@ export default function CreateExamModal({
     ) {
       try {
         const res = await mutation(getInsertExamQuery(examInfo));
-        alert(`Exam ID: ${res.insert_exams_one.id}`);
+        if(res?.insert_exams_one?.id){
+          const response = await mutation(getUpsertAllowedTeacherQuery( examInfo.creatorEmail ,res?.insert_exams_one?.id))
+          if(data){
+            alert(`Exam ID: ${res?.insert_exams_one?.id}`);
+          }
+          else{
+            console.log("Something Wrong While Creating Exam!");
+          }
+        }
       } catch (e) {
         console.log(e);
-        alert(`Failed to create exam! ${e}`);
+        // alert(`Failed to create exam! ${e}`);
       }
       setOpen(false);
     } else {

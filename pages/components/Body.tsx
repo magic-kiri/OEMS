@@ -3,9 +3,7 @@ import bodystyle from "./body.module.css";
 
 import { dashboardRefreshTime, UserContext } from "../_app";
 
-import {
-  getAllExamsQueryString,
-} from "../../lib/graphqlQuery/graphqlQuery";
+import { getAllExamsQueryString } from "../../lib/graphqlQuery/graphqlQuery";
 
 import RunningExamCard from "./RunningExamCard";
 import ExamCard from "./ExamCard";
@@ -21,24 +19,27 @@ const Body = ({ examCatagory }: { examCatagory: string }) => {
   const [finishedExam, setFinishedExam] = useState<ExamTypeDate[]>([]);
   const { userInfo } = useContext(UserContext);
 
-  useEffect(() => {
-    const timer = setInterval(async () => {
-      try {
-        const { data } = await axiosQuery(getAllExamsQueryString());
-        const exams: ExamTypeDate[] = data.exams.map(convertExamDates);
-        const { upcomming, running, finished } = parseExams(exams);
+  const refreshExam = async () => {
+    try {
+      const { data } = await axiosQuery(getAllExamsQueryString());
+      const exams: ExamTypeDate[] = data.exams.map(convertExamDates);
+      const { upcomming, running, finished } = parseExams(exams);
 
-        if (JSON.stringify(upcomming) != JSON.stringify(upcommingExam)) {
-          setUpcommingExam(upcomming);
-        }
-        if (JSON.stringify(running) != JSON.stringify(runningExam)) {
-          setRunningExam(running);
-        }
-        if (JSON.stringify(finished) != JSON.stringify(finishedExam)) {
-          setFinishedExam(finished);
-        }
-      } catch (err) {}
-    }, dashboardRefreshTime);
+      if (JSON.stringify(upcomming) != JSON.stringify(upcommingExam)) {
+        setUpcommingExam(upcomming);
+      }
+      if (JSON.stringify(running) != JSON.stringify(runningExam)) {
+        setRunningExam(running);
+      }
+      if (JSON.stringify(finished) != JSON.stringify(finishedExam)) {
+        setFinishedExam(finished);
+      }
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    refreshExam();
+    const timer = setInterval(refreshExam, dashboardRefreshTime);
     return () => clearInterval(timer);
   }, []);
 
