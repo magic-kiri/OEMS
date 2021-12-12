@@ -46,6 +46,7 @@ const ExamBody = ({ id }: { id: string }) => {
           time={exam.end_time}
           id={id}
         />
+        {/* @ts-ignore */}
         <ExamTabs exam={exam} status={status} />
       </div>
     );

@@ -194,7 +194,9 @@ export const getAllowedTeacherQueryString: (id: string) => string = (id) => `
 export const getAllowedTeacherQuery: (id: string) => DocumentNode = (id) =>
   gql(getAllowedTeacherQueryString(id));
 
-export const getClarificationWithIdQueryString: (id: string) => string = (id) => `
+export const getClarificationWithIdQueryString: (id: string) => string = (
+  id
+) => `
   query MyQuery {
     clarification(where: {exam_id: {_eq: ${45}}}) {
       id
@@ -207,10 +209,11 @@ export const getClarificationWithIdQueryString: (id: string) => string = (id) =>
   }
 `;
 
-export const getClarificationWithIdQuery: (id: string) => DocumentNode = (id) =>
-{
+export const getClarificationWithIdQuery: (id: string) => DocumentNode = (
+  id
+) => {
   return gql(getClarificationWithIdQueryString(id));
-}
+};
 
 export const getUpsertClarificationQueryString: (
   exam_id: string,
@@ -222,4 +225,26 @@ export const getUpsertClarificationQueryString: (
       id
     }
   }
+`;
+
+export const getUpsertQuestionQueryString: (
+  link: string,
+  exam_id: string
+) => string = (link, exam_id) => `
+  mutation MyMutation {
+    insert_questions_one(object: {link: "${link}", exam_id: ${exam_id}}) {
+      id
+      link
+    }
+  }
+`;
+
+export const getQuestionsWithIdQueryString: (id: string) => string = (id) => `
+query MyQuery {
+  questions(where: {exam_id: {_eq: ${id}}}) {
+    link
+    exam_id
+    id
+  }
+}
 `;

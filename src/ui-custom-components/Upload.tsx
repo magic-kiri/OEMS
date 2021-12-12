@@ -6,14 +6,14 @@ import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { storageRef } from "../../public/firebase/initFirebase";
 const { Dragger } = Upload;
 
-const upload = ({ setLink }: { setLink: (value: string) => void }) => {
+const upload = ({ setLink, exam_id, prefix }: { prefix:string, exam_id: string, setLink: (value: string) => void }) => {
   const props = {
     name: "file",
     multiple: false,
     onChange(info: any) {
       const { status } = info.file;
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        // console.log(info.file, info.fileList);
       }
       if (status === "done") {
         message.success(`${info.file.name} file uploaded successfully.`);
@@ -22,10 +22,10 @@ const upload = ({ setLink }: { setLink: (value: string) => void }) => {
       }
     },
     beforeUpload(file: any, fileList: any) {
-      const fileRef = ref(storageRef, file.name);
+      const fileRef = ref(storageRef, prefix+file.name);
       uploadBytes(fileRef, file).then((snapshot) => {
         getDownloadURL(fileRef).then((url) => setLink(url));
-        console.log({ snapshot });
+        // console.log({ snapshot });
       });
     },
     onDrop(e: any) {
