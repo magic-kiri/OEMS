@@ -187,6 +187,10 @@ export const getAllowedTeacherQueryString: (id: string) => string = (id) => `
   query MyQuery {
     allowed_teacher(where: {exam_id: {_eq: ${id}}}) {
       email
+      user {
+        name
+        imageUrl
+      }
     }
   }
 `;
@@ -198,7 +202,7 @@ export const getClarificationWithIdQueryString: (id: string) => string = (
   id
 ) => `
   query MyQuery {
-    clarification(where: {exam_id: {_eq: ${45}}}) {
+    clarification(where: {exam_id: {_eq: ${id}}}) {
       id
       text
       user {
@@ -247,4 +251,35 @@ query MyQuery {
     id
   }
 }
+`;
+
+export const getAllTeacherQuery: () => DocumentNode = () =>
+  gql(`
+  query MyQuery {
+    users(where: {adminRole: {_eq: true}}) {
+      email
+      imageUrl
+      name
+    }
+  }
+`);
+
+export const getUpdateRollAndContactQueryString: (
+  email: string,
+  contact: string,
+  roll: string
+) => string = (email, contact, roll) =>
+`
+  mutation MyMutation {
+    update_users(where: {email: {_eq: "${email}"}}, _set: {roll: "${roll}", contactNo: "${contact}"}) {
+      returning {
+        id
+        name
+        email
+        adminRole
+        roll
+        contactNo
+      }
+    }
+  }
 `;

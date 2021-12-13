@@ -9,8 +9,8 @@ export default function DownloadScriptModal({ setOpen, open }) {
   const [link, setLink] = useState<string>();
 
   const handleSubmit = () => {
-    setOpen(false);
-    alert("Done");
+    // setOpen(false);
+    setLink("https://firebasestorage.googleapis.com/v0/b/sust-oems.appspot.com/o/question-40Code.cpp?alt=media&token=56e0e643-eda7-44eb-a576-300eb9cb9388")
   };
 
   const handleClickClose = () => {
@@ -32,7 +32,7 @@ export default function DownloadScriptModal({ setOpen, open }) {
           onClick={handleSubmit}
           style={{ marginRight: "7px", marginLeft: "10px" }}
         >
-          Done
+          Create PDF
         </Button>,
       ]}
     >
@@ -43,7 +43,7 @@ export default function DownloadScriptModal({ setOpen, open }) {
           href={link}
           target="_blank"
         >
-          Script link.
+          Here is your script!
         </Link>
       )}
     </Modal>

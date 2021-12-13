@@ -41,8 +41,8 @@ const ExamBody = ({ id }: { id: string }) => {
       <div className={ExamBodyStyle.examBody}>
         <ExamHeaderCard
           status={status}
-          title="Database Management System and Software Engineering"
-          courseCode="CSE 334"
+          title={exam.course.course_title}
+          courseCode={exam.course.course_code}
           time={exam.end_time}
           id={id}
         />

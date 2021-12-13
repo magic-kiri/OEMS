@@ -6,7 +6,10 @@ import { imageLink } from "../../data";
 import Image from "next/image";
 import SingleClarification from "./SingleClarification";
 import { axiosQuery, query } from "../../../lib/databaseQuery/query";
-import { getAllowedTeacherQuery, getClarificationWithIdQueryString } from "../../../lib/graphqlQuery/graphqlQuery";
+import {
+  getAllowedTeacherQuery,
+  getClarificationWithIdQueryString,
+} from "../../../lib/graphqlQuery/graphqlQuery";
 import { clarificationRefreshTime, UserContext } from "../../_app";
 import InputClarificationBox from "./InputClarificationBox";
 
@@ -22,9 +25,12 @@ export type SingleClarificationType = {
     imageUrl: string;
   };
 };
-const fetchClarifications = async (id: string, setClarifications: (clarificatios: SingleClarificationType[])=>void) => {
-  const {data} = await axiosQuery(getClarificationWithIdQueryString(id));
-  if(data?.clarification){
+const fetchClarifications = async (
+  id: string,
+  setClarifications: (clarificatios: SingleClarificationType[]) => void
+) => {
+  const { data } = await axiosQuery(getClarificationWithIdQueryString(id));
+  if (data?.clarification) {
     setClarifications(data?.clarification);
   }
 };
@@ -32,8 +38,9 @@ const fetchClarifications = async (id: string, setClarifications: (clarificatios
 const Clarification = ({ id }: ClarificationType) => {
   const { userInfo } = useContext(UserContext);
   const [adminRole, setAdminRole] = useState<boolean>(false);
-  const [clarifications, setClarifications] = useState<SingleClarificationType[]>([]);
-
+  const [clarifications, setClarifications] = useState<
+    SingleClarificationType[]
+  >([]);
 
   const getAllowedTeacherEmails = async () => {
     const data = await query(getAllowedTeacherQuery(id));
@@ -50,12 +57,12 @@ const Clarification = ({ id }: ClarificationType) => {
   };
 
   useEffect(() => {
-    fetchClarifications(id,setClarifications);
+    fetchClarifications(id, setClarifications);
     if (userInfo?.email) {
       getAllowedTeacherEmails();
     }
     const timer = setInterval(async () => {
-      fetchClarifications(id,setClarifications);
+      fetchClarifications(id, setClarifications);
     }, clarificationRefreshTime);
     return () => clearInterval(timer);
   }, []);
@@ -69,19 +76,19 @@ const Clarification = ({ id }: ClarificationType) => {
       text,
       user: {
         name: userInfo?.name as unknown as string,
-        imageUrl: userInfo?.imageUrl as unknown as string
-      }
-    }
+        imageUrl: userInfo?.imageUrl as unknown as string,
+      },
+    };
     setClarifications((prev) => [...prev, newClarification]);
-  }
+  };
   return (
     <div className={ClarificationStyle.clarificationBox}>
       <div style={{ alignItems: "left" }}>
         <Text>{clarifications.length} Clarification</Text>
         <Divider style={{ margin: "15px 0px" }} />
-        {
-          clarifications.map((clarification) => <SingleClarification key={clarification.id} {...clarification}/>)
-        }
+        {clarifications.map((clarification) => (
+          <SingleClarification key={clarification.id} {...clarification} />
+        ))}
       </div>
       {adminRole && (
         <>
@@ -96,7 +103,10 @@ const Clarification = ({ id }: ClarificationType) => {
                 width="35vw"
               />
             </div>
-            <InputClarificationBox id={id} addNewClarification={addNewClarification}/>
+            <InputClarificationBox
+              id={id}
+              addNewClarification={addNewClarification}
+            />
           </div>
         </>
       )}

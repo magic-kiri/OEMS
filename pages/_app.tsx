@@ -16,7 +16,7 @@ export const UserContext = React.createContext(nullUserContext);
 const Loader = ({ children }) => {
   const [session, loading] = useSession();
   const [userInfo, setUserInfo] = useState<UserInfoType>();
-
+  
   useEffect(() => {
     if (session?.user) {
       const email = session?.user?.email;

@@ -4,9 +4,30 @@ import Text from "../../../src/ui-custom-components/Text";
 import Modal from "../../../src/ui-custom-components/Modal";
 import Select from "../../../src/ui-custom-components/Select";
 import Option from "../../../src/ui-custom-components/Option";
+import { useQuery } from "@apollo/client";
+import { getAllTeacherQuery } from "../../../lib/graphqlQuery/graphqlQuery";
+import Loading from "../../../src/ui-custom-components/Loading";
 
-//@ts-ignore
-export default function AddTeachersModal({ setOpen, open }) {
+export default function AddTeachersModal({ setOpen, open }: {open: boolean, setOpen: any}) {
+
+  const {data, loading, error} = useQuery(getAllTeacherQuery());
+  const [selectedEmail, setSelectedEmail] = useState([]);
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "200px",
+        }}
+      >
+        <Loading />
+      </div>
+    );
+  } 
+
+
   const handleSubmit = () => {
     setOpen(false);
     alert("Done");
@@ -20,13 +41,20 @@ export default function AddTeachersModal({ setOpen, open }) {
     console.log(`selected ${value}`);
   }
 
-  const children = [];
+  let children = [];
   for (let i = 10; i < 36; i++) {
     children.push(
       <Option key={i.toString(36) + i} value={i.toString(36) + i}>
         {i.toString(36) + i}
       </Option>
     );
+  }
+
+  if(data){
+    const {users} = data;
+
+    children = users.map((user: any, index: number) => <Option key={index} value={user?.email}>{user?.name}</Option> )
+    
   }
 
   return (
