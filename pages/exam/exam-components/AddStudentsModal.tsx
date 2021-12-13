@@ -41,9 +41,6 @@ export default function AddStudentModal({ setOpen, open }) {
           Upload a CSV file to add students.
         </Text>
         <Upload setLink={setLink} />
-        <Button theme="upload" style={{ marginTop: "20px" }}>
-          Upload
-        </Button>
       </div>
     </Modal>
   );

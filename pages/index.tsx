@@ -16,11 +16,15 @@ export default function Home() {
           // layout="responsive"
         />
       </div>
-      <h3 style={{ marginBottom: "unset" }}>
+      <h3
+        style={{ marginBottom: "unset", fontSize: "22px", marginTop: "10px" }}
+      >
         Shahjalal University of Science and Technology
       </h3>
-      <h1 style={{ marginTop: "unset" }}>Online Exam Management System</h1>
-      <Button onClick={logIn} theme="light">
+      <h1 style={{ marginTop: "-5px", fontSize: "30px" }}>
+        Online Exam Management System
+      </h1>
+      <Button onClick={logIn} theme="dark">
         Get Started
       </Button>
     </div>

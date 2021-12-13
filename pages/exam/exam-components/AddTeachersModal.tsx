@@ -61,9 +61,6 @@ export default function AddTeachersModal({ setOpen, open }) {
         >
           {children}
         </Select>
-        <Button theme="light" style={{ marginTop: "20px" }}>
-          Add
-        </Button>
       </div>
     </Modal>
   );

@@ -23,7 +23,7 @@ export default function AttendExamModal({ setOpen, open }) {
 
   return (
     <Modal
-      visible={true}
+      visible={open}
       title="Attend an Exam"
       onCancel={handleClickClose}
       footer={[

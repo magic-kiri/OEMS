@@ -1,6 +1,6 @@
 .profileBody {
   margin-top: 90px;
-  background-color: #fafafa;
+  background-color: white;
   height: 100%;
   width: 100%;
   display: flex;
@@ -11,7 +11,7 @@
 .profileHeader {
   margin-top: 25px;
   margin-bottom: 0px;
-  width: 60%;
+  width: 50%;
   height: 90px;
   border: 0.5px solid #cccccc;
   color: white;

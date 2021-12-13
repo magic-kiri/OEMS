@@ -1,7 +1,8 @@
 .bodyrest {
   height: 100%;
   margin-top: 90px;
-  background-color: #fafafa;
+  padding-top: 30px;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
