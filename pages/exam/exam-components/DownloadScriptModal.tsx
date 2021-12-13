@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../../src/ui-custom-components/Button";
 import Modal from "../../../src/ui-custom-components/Modal";
 import CheckBox from "./CheckBox";
+import Link from "../../../src/ui-custom-components/Link";
 
 //@ts-ignore
 export default function DownloadScriptModal({ setOpen, open }) {
+  const [link, setLink] = useState<string>();
+
   const handleSubmit = () => {
     setOpen(false);
     alert("Done");
@@ -34,6 +37,15 @@ export default function DownloadScriptModal({ setOpen, open }) {
       ]}
     >
       <CheckBox />
+      {link && (
+        <Link
+          style={{ fontSize: "18px", marginTop: "5px" }}
+          href={link}
+          target="_blank"
+        >
+          Script link.
+        </Link>
+      )}
     </Modal>
   );
 }

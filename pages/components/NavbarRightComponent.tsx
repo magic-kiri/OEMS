@@ -8,6 +8,7 @@ import Dropdown, { ItemType } from "../../src/ui-custom-components/Dropdown";
 import navstyle from "./navbar.module.css";
 import { logOut } from "../utils/authentication";
 import { useRouter } from "next/router";
+import EnterExamModal from "./EnterExamModal";
 
 const NavbarRightComponenet = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -61,14 +62,23 @@ const NavbarRightComponenet = () => {
         marginRight: "10px",
       }}
     >
-      <div>
-        <CreateExamModal open={open} setOpen={setOpen} />
-        <PlusCircleOutlined
-          style={{ fontSize: "24px", color: "#1890ff", marginLeft: "15px" }}
-          onClick={handleClick}
-        />
-      </div>
-
+      {session?.adminRole ? (
+        <div>
+          <CreateExamModal open={open} setOpen={setOpen} />
+          <PlusCircleOutlined
+            style={{ fontSize: "24px", color: "#1890ff", marginLeft: "15px" }}
+            onClick={handleClick}
+          />
+        </div>
+      ) : (
+        <div>
+          <EnterExamModal open={open} setOpen={setOpen} />
+          <PlusCircleOutlined
+            style={{ fontSize: "24px", color: "#1890ff", marginLeft: "15px" }}
+            onClick={handleClick}
+          />
+        </div>
+      )}
       <div ref={ref}>
         <PermissionModal open={openPermission} setOpen={setOpenPermission} />
         {/* @ts-ignore */}
