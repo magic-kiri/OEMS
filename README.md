@@ -52,9 +52,8 @@ You are by default an student and can claim your teacher role.
 ## Video Presentation
 Google Drive Link: https://drive.google.com/file/d/17uAnS444OeqxRNkO1MxdnzuhUhd5kDet/view?usp=sharing
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started (How to Configure)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ### Steps to run 
 1) First, clone the repository.
 2) Install [node](https://nodejs.org/en/) on your device.
